@@ -1,0 +1,42 @@
+.nav-link {
+  display: flex;
+  width: 185px;
+  padding: 16px;
+  height: 24px;
+  align-items: center;
+  gap: 16px;
+
+  &--selected {
+    border-radius: 8px;
+    background: #C06ECC;
+  }
+
+  &_text {
+    color: #121212;
+    font-family: Inter, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+
+    &--selected {
+      color: #ffffff;
+    }
+  }
+
+  &_icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    path {
+      fill: black;
+    }
+
+    &--selected {
+      & path {
+        fill: white;
+      }
+    }
+  }
+}
