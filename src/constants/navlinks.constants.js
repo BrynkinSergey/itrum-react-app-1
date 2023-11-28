@@ -56,8 +56,8 @@ const navlinks = [
         icon: SeminarsIcon
     },
     {
-        id: 'promocodes',
-        text: 'Промокоды',
+        id: 'promotions',
+        text: 'Акции',
         icon: PromoСodesIcon
     },
 ]

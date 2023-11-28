@@ -6,10 +6,7 @@
   align-items: center;
   gap: 16px;
 
-  &--selected {
-    border-radius: 8px;
-    background: #C06ECC;
-  }
+  text-decoration: none;
 
   &_text {
     color: #121212;
@@ -18,10 +15,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-
-    &--selected {
-      color: #ffffff;
-    }
   }
 
   &_icon {
@@ -32,15 +25,20 @@
     path {
       fill: black;
     }
-
-    &--selected {
-      & path {
-        fill: white;
-      }
-    }
   }
 
-  &_wrapper {
-    text-decoration: none;
+  &--active {
+    @extend .nav-link;
+    border-radius: 8px;
+    background: #C06ECC;
+    //color: #ffffff;
+
+    .nav-link_text {
+      color: white;
+    }
+
+    & path {
+      fill: white;
+    }
   }
 }
