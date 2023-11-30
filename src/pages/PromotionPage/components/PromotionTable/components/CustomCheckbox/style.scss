@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.checkbox-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-wrapper input[type=checkbox] {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid $grayspace-layout-gray-30;
+  background-color: $grayspace-layout-white;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked {
+  border: 0;
+  background-image: url('./images/master.svg');
+}

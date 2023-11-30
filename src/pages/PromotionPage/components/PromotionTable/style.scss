@@ -1,0 +1,55 @@
+@import "src/styles/variables";
+
+.promotion-table {
+  width: 959px;
+  height: 452px;
+
+  //background-color: red;
+
+  &_header {
+    height: 44px;
+    border-bottom: 1px solid $grayspace-layout-gray-10;
+    border-top: 1px solid $grayspace-layout-gray-10;
+    background-color: $grayspace-layout-gray-5;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &_header > *:nth-child(n) {
+    box-sizing: border-box;
+    padding: 0 8px;
+    height: fit-content;
+    margin: 0;
+  }
+
+  &_header > *:nth-child(1),
+  &_content > *:nth-child(1) {
+    width: 48px;
+  }
+
+  &_header > p:nth-child(2),
+  &_content > p:nth-child(2) {
+    width: 242px;
+  }
+
+  &_header > p:nth-child(3),
+  &_content > p:nth-child(3) {
+    width: 189px;
+  }
+
+  &_header > p:nth-child(4),
+  &_content > p:nth-child(4) {
+    width: 181px;
+  }
+
+  &_header > p:nth-child(5),
+  &_content > p:nth-child(5) {
+    width: 224px;
+  }
+
+  &_header > p:nth-child(6),
+  &_content > p:nth-child(6) {
+    width: 75px;
+  }
+}
