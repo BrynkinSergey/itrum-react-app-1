@@ -1,9 +1,10 @@
 import './PromotionPage.scss'
 import Button from "../../components/Button/Button";
+import PaginatonNavbar from "./components/PaginatonNavbar";
 
 const PromotionPage = () => (
     <div className={'promotion-page'}>
-        <div className={'hueta'}></div>
+        <PaginatonNavbar/>
         <div className={'btn-container'}>
             <Button text={'Добавить акцию'}/>
         </div>

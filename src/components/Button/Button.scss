@@ -1,6 +1,4 @@
-$cskc-06-ecc-400: #BD68CA;
-$cskc-06-ecc-500: #C06ECC;
-$grayspace-layout-white: #FFF;
+@import "src/styles/variables";
 
 .btn {
   border: 1px solid $cskc-06-ecc-400;
@@ -27,16 +25,5 @@ $grayspace-layout-white: #FFF;
   &:active {
     transform: translateY(2px);
     box-shadow: 0px 0px;
-  }
-
-  &_text {
-    color: $grayspace-layout-white;
-
-    /* Headline/H300  (medium) */
-    font-family: Inter, serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
   }
 }

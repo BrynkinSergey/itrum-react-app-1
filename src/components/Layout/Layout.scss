@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .layout {
   display: flex;
   max-width: 1440px;
@@ -5,7 +7,7 @@
   padding: 24px 96px;
   align-items: flex-start;
   gap: 24px;
-  background-color: #F8F8FA;
+  background-color: $lightgrey;
 
   &_navbar {
     display: flex;
@@ -29,7 +31,7 @@
     gap: 24px;
 
     border-radius: 24px 24px 0px 0px;
-    background-color: #FFF;
+    background-color: $grayspace-layout-white;
     box-shadow: -5px 1px 15px 0px rgba(0, 0, 0, 0.05);
   }
 }

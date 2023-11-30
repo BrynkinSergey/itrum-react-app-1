@@ -1,0 +1,38 @@
+@import "src/styles/variables";
+
+$color-map: (
+        grayspace-layout-white: $grayspace-layout-white,
+        text-main: $text-main,
+        text-disable: $text-disable,
+        grayspace-text-gray-70: $grayspace-text-gray-70,
+        black: $black
+);
+
+@each $name, $color in $color-map {
+  .font-color--#{$name} {
+    color: $color;
+  }
+}
+
+$sizes: 14, 16;
+@each $size in $sizes {
+  .font-size--#{$size} {
+    font-size: #{$size}px;
+  }
+}
+
+$line-heights: 20, 24;
+@each $line-height in $line-heights {
+  .font-line-height--#{$line-height} {
+    line-height: #{$line-height}px;
+  }
+}
+
+$weights: 400, 500;
+@each $weight in $weights {
+  .font-weight--#{$weight} {
+    font-weight: $weight;
+  }
+}
+
+

@@ -1,0 +1,27 @@
+@import "src/styles/variables";
+
+.change-page-button {
+  box-sizing: border-box;
+  cursor: pointer;
+
+  display: flex;
+  height: 32px;
+  padding: 4px 7px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+
+  border-radius: 0px 4px 4px 0px;
+  border: 1px solid $grayspace-layout-gray-30;
+  background: $grayspace-layout-gray-5;
+
+  &--reversed {
+    @extend .change-page-button;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  &:active {
+    background: $grayspace-layout-gray-30;
+  }
+}

@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .nav-link {
   display: flex;
   width: 185px;
@@ -9,8 +11,6 @@
   text-decoration: none;
 
   &_text {
-    color: #121212;
-    font-family: Inter, serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -28,14 +28,8 @@
   }
 
   &--active {
-    @extend .nav-link;
     border-radius: 8px;
-    background: #C06ECC;
-    //color: #ffffff;
-
-    .nav-link_text {
-      color: white;
-    }
+    background: $cskc-06-ecc-500;
 
     & path {
       fill: white;
