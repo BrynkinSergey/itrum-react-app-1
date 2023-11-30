@@ -5,6 +5,7 @@ $color-map: (
         text-main: $text-main,
         text-disable: $text-disable,
         grayspace-text-gray-70: $grayspace-text-gray-70,
+        grayspace-icon-gray-80: $grayspace-icon-gray-80,
         black: $black
 );
 
@@ -14,7 +15,7 @@ $color-map: (
   }
 }
 
-$sizes: 14, 16;
+$sizes: 13, 14, 16;
 @each $size in $sizes {
   .font-size--#{$size} {
     font-size: #{$size}px;
