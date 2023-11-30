@@ -1,8 +1,9 @@
 import './style.scss'
 import {ReactComponent as ArrowSvg} from "./images/arrow.svg";
 
-const ChangePageBtn = ({isReversed = false}) => {
-    return <button className={`change-page-button${isReversed ? '--reversed' : ''}`}>
+const ChangePageBtn = ({isDisabled = false, isReversed = false, onClickHandler}) => {
+    return <button disabled={isDisabled} className={`change-page-button${isReversed ? '--reversed' : ''}`}
+                   onClick={() => onClickHandler()}>
         <ArrowSvg/>
     </button>
 }
