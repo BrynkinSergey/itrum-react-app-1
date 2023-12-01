@@ -2,7 +2,7 @@ import './style.scss'
 import PromotionTableRow from "./components/PromotionTableRow";
 import {useEffect, useState} from "react";
 
-const PromotionTable = ({data, paginationValue, setIsSomeChecked}) => {
+const PromotionTable = ({data, paginationValue, setNumberOfSelectedRows}) => {
 
     const [isAllChecked, setIsAllChecked] = useState(0)
     const [isCheckedList, setIsCheckedList] = useState(new Array(+paginationValue).fill(0))
@@ -19,20 +19,18 @@ const PromotionTable = ({data, paginationValue, setIsSomeChecked}) => {
     }, [isAllChecked])
 
     useEffect(() => {
-        const isEveryChecked = isCheckedList.every(el => el);
-        const isEveryNotChecked = isCheckedList.every(el => !el);
-        if (isEveryChecked) {
+        const numberOfChecked = isCheckedList.filter(el => el).length
+        const numberOfNotChecked = isCheckedList.length - numberOfChecked;
+
+        if (numberOfChecked === isCheckedList.length) {
             setIsAllChecked(1)
-            setIsSomeChecked(true)
-        }
-        if (isEveryNotChecked) {
+        } else if (numberOfNotChecked === isCheckedList.length) {
             setIsAllChecked(0)
-            setIsSomeChecked(false)
-        }
-        if (!isEveryChecked && !isEveryNotChecked) {
+        } else {
             setIsAllChecked(2)
-            setIsSomeChecked(true)
         }
+        
+        setNumberOfSelectedRows(numberOfChecked)
 
     }, [isCheckedList])
 
