@@ -1,9 +1,9 @@
 import './style.scss'
 
-const CustomCheckbox = ({isChecked, setIsChecked, isSomeChecked}) => {
+const CustomCheckbox = ({isChecked, onChangeHandler, isSomeChecked = false}) => {
     return (
         <div className={`checkbox-wrapper${isSomeChecked ? ' checkbox-wrapper--some-checked' : ''}`}>
-            <input onChange={() => setIsChecked()} type="checkbox" checked={isChecked}/>
+            <input onChange={() => onChangeHandler()} type="checkbox" checked={isChecked}/>
         </div>
     );
 };
