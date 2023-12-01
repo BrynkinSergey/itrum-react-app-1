@@ -1,11 +1,9 @@
 import './style.scss'
-import {useState} from "react";
 
-const CustomCheckbox = () => {
-    const [isChecked, setIsChecked] = useState(false);
+const CustomCheckbox = ({isChecked, setIsChecked, isSomeChecked}) => {
     return (
-        <div className="checkbox-wrapper">
-            <input onChange={() => setIsChecked(prev => !prev)} type="checkbox" checked={isChecked}/>
+        <div className={`checkbox-wrapper${isSomeChecked ? ' checkbox-wrapper--some-checked' : ''}`}>
+            <input onChange={() => setIsChecked()} type="checkbox" checked={isChecked}/>
         </div>
     );
 };

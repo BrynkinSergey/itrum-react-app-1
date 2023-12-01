@@ -46,7 +46,7 @@ const PromotionPage = () => {
         <div className={'btn-container'}>
             <Button text={'Добавить акцию'}/>
         </div>
-        <PromotionTable data={showedData}/>
+        <PromotionTable paginationValue={paginationValue} data={showedData}/>
     </div>
 }
 
