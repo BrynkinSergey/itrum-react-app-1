@@ -4,7 +4,7 @@ import {ReactComponent as BrandsIcon} from '../images/icons/navbar/Brands.svg'
 import {ReactComponent as CategoriesIcon} from '../images/icons/navbar/Categories.svg'
 import {ReactComponent as CitiesIcon} from '../images/icons/navbar/Cities.svg'
 import {ReactComponent as OrdersIcon} from '../images/icons/navbar/Orders.svg'
-import {ReactComponent as PromoСodesIcon} from '../images/icons/navbar/Promocodes.svg'
+import {ReactComponent as PromoCodesIcon} from '../images/icons/navbar/Promocodes.svg'
 import {ReactComponent as ProtocolsIcon} from '../images/icons/navbar/Protocols.svg'
 import {ReactComponent as SeminarsIcon} from '../images/icons/navbar/Seminars.svg'
 import {ReactComponent as UsersIcon} from '../images/icons/navbar/Users.svg'
@@ -58,7 +58,7 @@ const navlinks = [
     {
         id: 'promotions',
         text: 'Акции',
-        icon: PromoСodesIcon
+        icon: PromoCodesIcon
     },
 ]
 
