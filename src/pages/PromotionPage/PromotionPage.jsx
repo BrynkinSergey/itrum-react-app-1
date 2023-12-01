@@ -5,6 +5,7 @@ import PromotionTable from "./components/PromotionTable";
 import {useEffect, useState} from "react";
 import tableData from "../../constants/tableData.constants";
 import parseData from "../../helpers/parseData";
+import DeleteModal from "./components/DeleteModal";
 
 const PromotionPage = () => {
     const [data, setData] = useState([])
@@ -12,6 +13,7 @@ const PromotionPage = () => {
     const [paginationValue, setPaginationValue] = useState(10)
     const [currentPage, setCurrentPage] = useState(1)
     const [pagesNumber, setPagesNumber] = useState(0)
+    const [isSomeChecked, setIsSomeChecked] = useState(false)
 
     useEffect(() => {
         setData(parseData(tableData))
@@ -39,6 +41,7 @@ const PromotionPage = () => {
     const selectChangeHandler = (choice) => {
         setPaginationValue(+choice.target.value)
     }
+
     return <div
         className={'promotion-page'}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
@@ -46,7 +49,8 @@ const PromotionPage = () => {
         <div className={'btn-container'}>
             <Button text={'Добавить акцию'}/>
         </div>
-        <PromotionTable paginationValue={paginationValue} data={showedData}/>
+        <PromotionTable setIsSomeChecked={setIsSomeChecked} paginationValue={paginationValue} data={showedData}/>
+        {isSomeChecked ? <DeleteModal/> : ''}
     </div>
 }
 

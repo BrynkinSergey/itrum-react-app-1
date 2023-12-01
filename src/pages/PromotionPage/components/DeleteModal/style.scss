@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.delete-modal {
+  width: 475px;
+  height: 108px;
+
+  display: flex;
+  padding: 16px 64px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  border-radius: 8px;
+  background: $grayspace-layout-white;
+  box-shadow: 0 0 1px 0 $modal-gray-shadow, 0 4px 8px 0 $modal-gray-shadow;
+
+  &_button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 0;
+    border: 0;
+    background-color: $grayspace-layout-white;
+  }
+}

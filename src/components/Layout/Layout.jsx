@@ -1,7 +1,7 @@
 import './Layout.scss'
 import {Route, Routes} from "react-router-dom";
 import CustomNavLink from "./components/CustomNavLink/CustomNavLink";
-import navlinks from "../../constants/navlinks.constants";
+import navlinks from "../../constants/navlinks.constants.js";
 import PromotionPage from "../../pages/PromotionPage/PromotionPage";
 
 const Layout = () =>

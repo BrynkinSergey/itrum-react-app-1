@@ -6,7 +6,9 @@ $color-map: (
         text-disable: $text-disable,
         grayspace-text-gray-70: $grayspace-text-gray-70,
         grayspace-icon-gray-80: $grayspace-icon-gray-80,
-        black: $black
+        black: $black,
+        black-040: $black-040,
+        gray-1: $gray-1,
 );
 
 @each $name, $color in $color-map {
