@@ -56,6 +56,10 @@ const PromotionPage = () => {
         setData([...data])
     }
 
+    const deleteSelectedRows = () => {
+        setData(data.filter(el => !el.isChecked))
+    }
+
     return <div
         className={'promotion-page'}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
@@ -65,7 +69,9 @@ const PromotionPage = () => {
         </div>
         <PromotionTable toggleCheckboxAll={toggleCheckboxAll}
                         data={showedData} toggleCheckbox={toggleCheckbox}/>
-        {data.some(el => el.isChecked) ? <DeleteModal numberOfChecked={data.filter(el => el.isChecked).length}/> : ''}
+        {data.some(el => el.isChecked) ?
+            <DeleteModal deleteHandler={deleteSelectedRows}
+                         numberOfChecked={data.filter(el => el.isChecked).length}/> : ''}
     </div>
 }
 
