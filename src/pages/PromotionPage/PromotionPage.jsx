@@ -13,7 +13,6 @@ const PromotionPage = () => {
     const [paginationValue, setPaginationValue] = useState(10)
     const [currentPage, setCurrentPage] = useState(1)
     const [pagesNumber, setPagesNumber] = useState(0)
-    const [numberOfSelectedRows, setNumberOfSelectedRows] = useState(false)
 
     useEffect(() => {
         setData(parseData(tableData))
@@ -23,12 +22,15 @@ const PromotionPage = () => {
     }, [])
 
     useEffect(() => {
+        setCurrentPage(1)
+    }, [paginationValue])
+
+    useEffect(() => {
         const pagesNumber = Math.ceil(data.length / paginationValue)
         setPagesNumber(pagesNumber);
     }, [paginationValue, data])
 
     useEffect(() => {
-        if (!currentPage) return
         if (currentPage < 1) setCurrentPage(1)
         if (currentPage > pagesNumber) setCurrentPage(pagesNumber)
         const showFrom = ((currentPage - 1) * paginationValue);
@@ -61,8 +63,7 @@ const PromotionPage = () => {
         <div className={'btn-container'}>
             <Button text={'Добавить акцию'}/>
         </div>
-        <PromotionTable toggleCheckboxAll={toggleCheckboxAll} setNumberOfSelectedRows={setNumberOfSelectedRows}
-                        paginationValue={paginationValue}
+        <PromotionTable toggleCheckboxAll={toggleCheckboxAll}
                         data={showedData} toggleCheckbox={toggleCheckbox}/>
         {data.some(el => el.isChecked) ? <DeleteModal numberOfChecked={data.filter(el => el.isChecked).length}/> : ''}
     </div>
