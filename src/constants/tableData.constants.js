@@ -1,6 +1,5 @@
 const tableData = [
     {
-        id: 1,
         category: 'Категория 1',
         subCategory: 'Подкатегория 1',
         brand: 'Бренд 1',
@@ -8,7 +7,6 @@ const tableData = [
         cashback: 0.1
     },
     {
-        id: 2,
         category: 'Категория 2',
         subCategory: 'Подкатегория 2',
         brand: 'Бренд 2',
@@ -16,7 +14,6 @@ const tableData = [
         cashback: 0.15
     },
     {
-        id: 3,
         category: 'Категория 3',
         subCategory: 'Подкатегория 3',
         brand: 'Бренд 3',
@@ -24,8 +21,6 @@ const tableData = [
         cashback: 0.2
     },
     {
-
-        id: 4,
         category: 'Категория 4',
         subCategory: 'Подкатегория 4',
         brand: 'Бренд 4',
@@ -33,8 +28,6 @@ const tableData = [
         cashback: 0.25
     },
     {
-
-        id: 5,
         category: 'Категория 5',
         subCategory: 'Подкатегория 5',
         brand: 'Бренд 5',
@@ -42,7 +35,6 @@ const tableData = [
         cashback: 0.3
     },
     {
-        id: 6,
         category: 'Категория 6',
         subCategory: 'Подкатегория 6',
         brand: 'Бренд 6',
@@ -50,7 +42,6 @@ const tableData = [
         cashback: 0.35
     },
     {
-        id: 7,
         category: 'Категория 7',
         subCategory: 'Подкатегория 7',
         brand: 'Бренд 7',
@@ -58,7 +49,6 @@ const tableData = [
         cashback: 0.4
     },
     {
-        id: 8,
         category: 'Категория 8',
         subCategory: 'Подкатегория 8',
         brand: 'Бренд 8',
@@ -66,7 +56,6 @@ const tableData = [
         cashback: 0.45
     },
     {
-        id: 9,
         category: 'Категория 9',
         subCategory: 'Подкатегория 9',
         brand: 'Бренд 9',
@@ -74,7 +63,6 @@ const tableData = [
         cashback: 0.5
     },
     {
-        id: 10,
         category: 'Категория 10',
         subCategory: 'Подкатегория 10',
         brand: 'Бренд 10',
@@ -82,7 +70,6 @@ const tableData = [
         cashback: 0.55
     },
     {
-        id: 11,
         category: 'Категория 11',
         subCategory: 'Подкатегория 11',
         brand: 'Бренд 11',

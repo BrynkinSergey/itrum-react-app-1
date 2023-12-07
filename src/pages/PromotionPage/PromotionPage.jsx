@@ -24,7 +24,6 @@ const PromotionPage = () => {
 
     useEffect(() => {
         const pagesNumber = Math.ceil(data.length / paginationValue)
-        setCurrentPage(1)
         setPagesNumber(pagesNumber);
     }, [paginationValue, data])
 
@@ -42,6 +41,19 @@ const PromotionPage = () => {
         setPaginationValue(+choice.target.value)
     }
 
+    const toggleCheckboxAll = (isChecked, isSomeChecked) => {
+        const showFrom = ((currentPage - 1) * paginationValue);
+        const showTo = showFrom + paginationValue;
+        data.slice(showFrom, showTo).forEach(el => el.isChecked = !(isChecked || isSomeChecked))
+        setData([...data])
+    }
+
+    const toggleCheckbox = (id) => {
+        const el = data.find(el => el.id === id)
+        el.isChecked = !el.isChecked;
+        setData([...data])
+    }
+
     return <div
         className={'promotion-page'}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
@@ -49,9 +61,10 @@ const PromotionPage = () => {
         <div className={'btn-container'}>
             <Button text={'Добавить акцию'}/>
         </div>
-        <PromotionTable setNumberOfSelectedRows={setNumberOfSelectedRows} paginationValue={paginationValue}
-                        data={showedData}/>
-        {numberOfSelectedRows ? <DeleteModal numberOfChecked={numberOfSelectedRows}/> : ''}
+        <PromotionTable toggleCheckboxAll={toggleCheckboxAll} setNumberOfSelectedRows={setNumberOfSelectedRows}
+                        paginationValue={paginationValue}
+                        data={showedData} toggleCheckbox={toggleCheckbox}/>
+        {data.some(el => el.isChecked) ? <DeleteModal numberOfChecked={data.filter(el => el.isChecked).length}/> : ''}
     </div>
 }
 
