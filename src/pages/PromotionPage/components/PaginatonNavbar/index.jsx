@@ -1,11 +1,21 @@
 import './style.scss'
 import ChangePageBtn from "./components/ChangePageBtn";
 import CustomSelect from "../../../../components/CustomSelect";
+import {useState} from "react";
 
 const PaginatonNavbar = ({selectChangeHandler, pagesNumber, currentPage, setCurrentPage}) => {
-    const inputChangeHandler = (e) => {
-        const newValue = e.target.value
+    const [curPage, setCurPage] = useState(currentPage)
+
+    const inputChangeHandler = (value) => {
+        let newValue = value
+        if (newValue < 1) newValue = 1;
+        if (newValue > pagesNumber) newValue = pagesNumber;
         setCurrentPage(newValue)
+        setCurPage(newValue)
+    }
+
+    const handleKeyPress = (e) => {
+        if (e.keyCode === 13) e.target.blur();
     }
 
     return <div className={'pagination-navbar'}>
@@ -18,16 +28,18 @@ const PaginatonNavbar = ({selectChangeHandler, pagesNumber, currentPage, setCurr
         <div className={'pagination-navbar_current-page'}>
             <p className={'font-size--14 font-line-height--20 font-weight--400 font-color--text-main'}>Страница</p>
             <div className={'pagination-navbar_input-wrapper'}>
-                <input type={'number'} value={currentPage} className={'pagination-navbar_input'}
-                       onChange={inputChangeHandler}/>
+                <input type={'number'} value={curPage} className={'pagination-navbar_input'}
+                       onChange={(e) => setCurPage(e.target.value)}
+                       onBlur={(e) => inputChangeHandler(e.target.value)}
+                       onKeyDown={(e) => handleKeyPress(e)}/>
                 <p className={'font-color--text-disable font-size--14 font-line-height--20 font-weight--400'}> из {pagesNumber}</p>
             </div>
         </div>
         <div className={'pagination-navbar_change-page-buttons'}>
             <ChangePageBtn isDisabled={currentPage === 1} isReversed={true}
-                           onClickHandler={() => setCurrentPage((prev) => +prev - 1)}/>
+                           onClickHandler={() => inputChangeHandler(curPage - 1)}/>
             <ChangePageBtn isDisabled={currentPage === pagesNumber}
-                           onClickHandler={() => setCurrentPage((prev) => +prev + 1)}/>
+                           onClickHandler={() => inputChangeHandler(curPage + 1)}/>
         </div>
     </div>
 }
