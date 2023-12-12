@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import tableData from "../../constants/tableData.constants";
 import parseData from "../../helpers/parseData";
 import DeleteModal from "./components/DeleteModal";
+import EditModal from "./components/EditModal";
 
 const PromotionPage = () => {
     const [data, setData] = useState([])
@@ -13,6 +14,7 @@ const PromotionPage = () => {
     const [paginationValue, setPaginationValue] = useState(10)
     const [currentPage, setCurrentPage] = useState(1)
     const [pagesNumber, setPagesNumber] = useState(0)
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
     useEffect(() => {
         setData(parseData(tableData))
@@ -64,14 +66,15 @@ const PromotionPage = () => {
         className={'promotion-page'}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
                          selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
-        <div className={'btn-container'}>
+        <div className={'btn-container'} onClick={() => setIsEditModalOpen(true)}>
             <Button text={'Добавить акцию'}/>
         </div>
         <PromotionTable toggleCheckboxAll={toggleCheckboxAll}
                         data={showedData} toggleCheckbox={toggleCheckbox}/>
-        {data.some(el => el.isChecked) ?
+        {data.some(el => el.isChecked) &&
             <DeleteModal deleteHandler={deleteSelectedRows}
-                         numberOfChecked={data.filter(el => el.isChecked).length}/> : ''}
+                         numberOfChecked={data.filter(el => el.isChecked).length}/>}
+        {isEditModalOpen && <EditModal closeHandler={() => setIsEditModalOpen(false)}/>}
     </div>
 }
 
