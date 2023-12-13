@@ -20,7 +20,7 @@ const EditModal = ({closeHandler}) => {
         <div className={'edit-modal'}>
             <div className={'edit-modal_content'}>
                 <div className={'edit-modal_buttons'}>
-                    <Button height={'48px'} width={'272px'} text={'Удалить'}/>
+                    <Button style={'outlined'} height={'48px'} width={'272px'} text={'Удалить'}/>
                     <Button height={'48px'} width={'272px'} text={'Сохранить'}/>
                 </div>
                 <div className={'edit-modal_promo-info font-color--grayspace-text-gray-90 font-size--14'}>
