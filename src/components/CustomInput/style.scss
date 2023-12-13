@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+
+.custom-input {
+  box-sizing: border-box;
+  width: 42px;
+  height: 32px;
+
+  border-radius: 8px;
+  border: 1px solid $forms-gray-20;
+  background: $grayspace-layout-white;
+
+  text-align: start;
+  padding: 10px 12px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}

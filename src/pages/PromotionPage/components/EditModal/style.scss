@@ -16,6 +16,9 @@
     width: 640px;
     background-color: $grayspace-layout-white;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   &_buttons {
@@ -33,6 +36,11 @@
   }
 
   &_promo-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
 
   }
 
