@@ -1,7 +1,10 @@
 import './style.scss'
 import PromotionTableRow from "./components/PromotionTableRow";
 
-const PromotionTable = ({data, toggleCheckbox, toggleCheckboxAll}) => {
+const PromotionTable = ({
+                            data, toggleCheckbox, toggleCheckboxAll, openEditModal = () => {
+    }
+                        }) => {
     const isChecked = data.every(el => el.isChecked)
     const isSomeChecked = data.some(el => el.isChecked)
 
@@ -14,7 +17,8 @@ const PromotionTable = ({data, toggleCheckbox, toggleCheckboxAll}) => {
             isChecked={isChecked}
             toggleCheckbox={() => toggleCheckbox(id)}
             id={id}
-            values={[category, subCategory, brand, products, cashback]}/>)}
+            values={[category, subCategory, brand, products, cashback]}
+            openEditModal={openEditModal}/>)}
     </div>
 }
 

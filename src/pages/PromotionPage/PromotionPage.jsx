@@ -15,6 +15,7 @@ const PromotionPage = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [pagesNumber, setPagesNumber] = useState(0)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+    const [editModalValues, setEditModalValues] = useState([0, 0, 0, 0, 0])
 
     useEffect(() => {
         setData(parseData(tableData))
@@ -62,6 +63,11 @@ const PromotionPage = () => {
         setData(data.filter(el => !el.isChecked))
     }
 
+    const openEditModal = (values) => {
+        setEditModalValues(values);
+        setIsEditModalOpen(true);
+    }
+
     return <div
         className={'promotion-page'}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
@@ -70,11 +76,12 @@ const PromotionPage = () => {
             <Button text={'Добавить акцию'}/>
         </div>
         <PromotionTable toggleCheckboxAll={toggleCheckboxAll}
-                        data={showedData} toggleCheckbox={toggleCheckbox}/>
+                        data={showedData} toggleCheckbox={toggleCheckbox}
+                        openEditModal={openEditModal}/>
         {data.some(el => el.isChecked) &&
             <DeleteModal deleteHandler={deleteSelectedRows}
                          numberOfChecked={data.filter(el => el.isChecked).length}/>}
-        {isEditModalOpen && <EditModal closeHandler={() => setIsEditModalOpen(false)}/>}
+        {isEditModalOpen && <EditModal values={editModalValues} closeHandler={() => setIsEditModalOpen(false)}/>}
     </div>
 }
 

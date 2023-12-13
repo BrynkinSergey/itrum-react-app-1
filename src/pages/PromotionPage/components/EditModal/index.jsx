@@ -5,7 +5,7 @@ import EditField from "./components/EditField";
 import CustomInput from "../../../../components/CustomInput";
 import CustomSelect from "../../../../components/CustomSelect";
 
-const EditModal = ({closeHandler}) => {
+const EditModal = ({closeHandler, values = [0, 0, 0, 0, 0]}) => {
     useEffect(() => {
         const close = (e) => {
             if (e.keyCode === 27) {
@@ -25,19 +25,22 @@ const EditModal = ({closeHandler}) => {
                 </div>
                 <div className={'edit-modal_promo-info font-color--grayspace-text-gray-90 font-size--14'}>
                     <EditField title={'Начисление кешбека с покупки'}>
-                        <CustomInput width={'560px'} height={'40px'} defaultValue={'20%'} type={'text'}/>
+                        <CustomInput width={'560px'} height={'40px'} defaultValue={values[4]} type={'text'}/>
                     </EditField>
 
                     <EditField title={'Категория'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[1, 2, 3]} defaultOption={1}/>
+                        <CustomSelect height={'40px'} width={'560px'} options={[values[0], 1, 2, 3]}
+                                      defaultOption={values[0]}/>
                     </EditField>
 
                     <EditField title={'Подкатегория'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[1, 2, 3]} defaultOption={1}/>
+                        <CustomSelect height={'40px'} width={'560px'} options={[values[1], 1, 2, 3]}
+                                      defaultOption={values[1]}/>
                     </EditField>
 
                     <EditField title={'Бренд'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[1, 2, 3]} defaultOption={1}/>
+                        <CustomSelect height={'40px'} width={'560px'} options={[values[2], 1, 2, 3]}
+                                      defaultOption={values[2]}/>
                     </EditField>
                 </div>
             </div>
