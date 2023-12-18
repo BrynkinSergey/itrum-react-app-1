@@ -4,6 +4,12 @@ import Button from "../../../../components/Button/Button";
 import EditField from "./components/EditField";
 import CustomInput from "../../../../components/CustomInput";
 import CustomSelect from "../../../../components/CustomSelect";
+import {
+    selectorBrands,
+    selectorCategories,
+    selectorProducts,
+    selectorSubCategories
+} from "../../../../constants/selectors-values.constants";
 
 const EditModal = ({closeHandler, handleSubmit, values}) => {
 
@@ -56,27 +62,27 @@ const EditModal = ({closeHandler, handleSubmit, values}) => {
                     </EditField>
 
                     <EditField title={'Категория'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[values.category, 1, 2, 3]}
+                        <CustomSelect height={'40px'} width={'560px'} options={selectorCategories}
                                       defaultOption={values[0]}
-                                      selectChangeHandler={choice => setCategory(+choice.target.value)}/>
+                                      selectChangeHandler={choice => setCategory(choice.target.value)}/>
                     </EditField>
 
                     <EditField title={'Подкатегория'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[values.subCategory, 1, 2, 3]}
+                        <CustomSelect height={'40px'} width={'560px'} options={selectorSubCategories}
                                       defaultOption={values[1]}
-                                      selectChangeHandler={choice => setSubCategory(+choice.target.value)}/>
+                                      selectChangeHandler={choice => setSubCategory(choice.target.value)}/>
                     </EditField>
 
                     <EditField title={'Бренд'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[values.brand, 1, 2, 3]}
+                        <CustomSelect height={'40px'} width={'560px'} options={selectorBrands}
                                       defaultOption={values[2]}
-                                      selectChangeHandler={choice => setBrand(+choice.target.value)}/>
+                                      selectChangeHandler={choice => setBrand(choice.target.value)}/>
                     </EditField>
 
                     <EditField title={'Товар'}>
-                        <CustomSelect height={'40px'} width={'560px'} options={[values.products, 1, 2, 3]}
+                        <CustomSelect height={'40px'} width={'560px'} options={selectorProducts}
                                       defaultOption={values[2]}
-                                      selectChangeHandler={choice => setProducts(+choice.target.value)}/>
+                                      selectChangeHandler={choice => setProducts(choice.target.value)}/>
                     </EditField>
                 </div>
             </div>
