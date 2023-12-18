@@ -6,9 +6,9 @@ const ButtonWarpper = styled.button`
   height: ${({height}) => height};
 `
 
-const Button = ({text, style = 'primary', ...rest}) => {
+const Button = ({text, handleClick, style = 'primary', ...rest}) => {
 
-    return <ButtonWarpper {...rest} className={`btn btn--${style}`}>
+    return <ButtonWarpper onClick={handleClick} {...rest} className={`btn btn--${style}`}>
         <p className={'font-size--16 font-line-height--24 font-weight--500'}>{text}</p>
     </ButtonWarpper>
 }

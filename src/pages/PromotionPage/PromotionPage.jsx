@@ -9,13 +9,24 @@ import DeleteModal from "./components/DeleteModal";
 import EditModal from "./components/EditModal";
 
 const PromotionPage = () => {
+    const emptyNewPromoValue = {
+        id: null,
+        isChecked: false,
+        category: '-',
+        subCategory: '-',
+        brand: '-',
+        products: '-',
+        cashback: ''
+    }
+
     const [data, setData] = useState([])
     const [showedData, setShowedData] = useState([])
     const [paginationValue, setPaginationValue] = useState(10)
     const [currentPage, setCurrentPage] = useState(1)
     const [pagesNumber, setPagesNumber] = useState(0)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-    const [editModalValues, setEditModalValues] = useState([0, 0, 0, 0, 0])
+    // const [editModalValues, setEditModalValues] = useState([0, 0, 0, 0, 0])
+    const [editModalValues, setEditModalValues] = useState(emptyNewPromoValue)
 
     useEffect(() => {
         setData(parseData(tableData))
@@ -68,11 +79,50 @@ const PromotionPage = () => {
         setIsEditModalOpen(true);
     }
 
+    const openAddModal = () => {
+        setEditModalValues(emptyNewPromoValue);
+        setIsEditModalOpen(true)
+    }
+
+    const addOrUpdatePromotion = (values) => {
+        const {category, subCategory, brand, products, cashback} = values
+        let {id} = values;
+
+        console.log(id)
+        console.log(values)
+
+        if (id === null) {
+            id = data[data.length - 1].id + 1
+
+            const newPromo = {
+                id: id,
+                brand: brand,
+                cashback: cashback,
+                category: category,
+                isChecked: false,
+                products: products,
+                subCategory: subCategory
+            }
+            setData([...data, newPromo])
+        } else {
+            const el = data.find(el => el.id === id)
+            el.brand = brand
+            el.cashback = cashback
+            el.category = category
+            el.products = products
+            el.subCategory = subCategory
+            console.log(el)
+
+            setData(data)
+        }
+        setIsEditModalOpen(false)
+    }
+
     return <div
         className={'promotion-page'}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
                          selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
-        <div className={'btn-container'} onClick={() => setIsEditModalOpen(true)}>
+        <div className={'btn-container'} onClick={openAddModal}>
             <Button text={'Добавить акцию'}/>
         </div>
         <PromotionTable toggleCheckboxAll={toggleCheckboxAll}
@@ -81,7 +131,8 @@ const PromotionPage = () => {
         {data.some(el => el.isChecked) &&
             <DeleteModal deleteHandler={deleteSelectedRows}
                          numberOfChecked={data.filter(el => el.isChecked).length}/>}
-        {isEditModalOpen && <EditModal values={editModalValues} closeHandler={() => setIsEditModalOpen(false)}/>}
+        {isEditModalOpen && <EditModal handleSubmit={addOrUpdatePromotion} values={editModalValues}
+                                       closeHandler={() => setIsEditModalOpen(false)}/>}
     </div>
 }
 

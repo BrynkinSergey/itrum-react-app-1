@@ -10,11 +10,17 @@ const CustomStyledInput = styled.input`
   border-radius: ${({borderRadius}) => borderRadius};
 `
 
-const CustomInput = ({defaultValue, type, inputChangeHandler, ...rest}) => {
+const CustomInput = ({
+                         defaultValue, type, inputChangeHandler = () => {
+    }, ...rest
+                     }) => {
     const [value, setValue] = useState(defaultValue)
 
     const handleKeyPress = (e) => {
-        if (e.keyCode === 13) e.target.blur();
+        if (e.keyCode === 13) {
+            console.log('input')
+            e.target.blur();
+        }
     }
 
     return (
