@@ -15,12 +15,14 @@ const PromotionTableRow = ({
     const defaultStyles = 'promotion-table_row font-color--text-main font-size--14 font-line-height--20 font-weight--400';
 
     return (
-        <div className={isHeader ? headerStyles : defaultStyles} onClick={() => {
-            if (!isHeader) openEditModal(values)
-        }}>
+        <div className={isHeader ? headerStyles : defaultStyles}>
             <CustomCheckbox isSomeChecked={isSomeChecked} isChecked={isChecked}
                             onChangeHandler={() => toggleCheckbox()}/>
-            {values.map(el => <p key={`cell-${id}-${el}`}>{el}</p>)}
+            <div onClick={() => {
+                if (!isHeader) openEditModal(values)
+            }}>
+                {values.map(el => <p key={`cell-${id}-${el}`}>{el}</p>)}
+            </div>
         </div>
     );
 };
