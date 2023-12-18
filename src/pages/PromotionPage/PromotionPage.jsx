@@ -42,6 +42,7 @@ const PromotionPage = () => {
     useEffect(() => {
         const pagesNumber = Math.ceil(data.length / paginationValue)
         setPagesNumber(pagesNumber);
+        if (currentPage > pagesNumber) setCurrentPage(pagesNumber)
     }, [paginationValue, data])
 
     useEffect(() => {
@@ -88,9 +89,6 @@ const PromotionPage = () => {
         const {category, subCategory, brand, products, cashback} = values
         let {id} = values;
 
-        console.log(id)
-        console.log(values)
-
         if (id === null) {
             id = data[data.length - 1].id + 1
 
@@ -111,7 +109,6 @@ const PromotionPage = () => {
             el.category = category
             el.products = products
             el.subCategory = subCategory
-            console.log(el)
 
             setData(data)
         }

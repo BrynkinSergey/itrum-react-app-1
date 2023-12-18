@@ -1,9 +1,14 @@
 import './style.scss'
 import ChangePageBtn from "./components/ChangePageBtn";
 import CustomSelect from "../../../../components/CustomSelect";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const PaginatonNavbar = ({selectChangeHandler, pagesNumber, currentPage, setCurrentPage}) => {
+
+    useEffect(() => {
+        setCurPage(currentPage)
+    }, [currentPage])
+
     const [curPage, setCurPage] = useState(currentPage)
 
     const inputChangeHandler = (value) => {
