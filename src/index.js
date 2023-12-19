@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/normalize.scss'
 import './index.scss';
-import './styles/fonts.scss'
 import 'typeface-inter';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
