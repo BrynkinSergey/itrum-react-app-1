@@ -9,7 +9,7 @@ import {ReactComponent as ProtocolsIcon} from '../images/icons/navbar/Protocols.
 import {ReactComponent as SeminarsIcon} from '../images/icons/navbar/Seminars.svg'
 import {ReactComponent as UsersIcon} from '../images/icons/navbar/Users.svg'
 
-const navlinks = [
+const navLinks = [
     {
         id: 'products',
         text: 'Продукты',
@@ -62,4 +62,4 @@ const navlinks = [
     },
 ]
 
-export default navlinks
+export default navLinks

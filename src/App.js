@@ -1,10 +1,10 @@
 import "./App.scss";
-import Index from "./components/Layout";
+import Layout from "./components/Layout";
 
 function App() {
 
     return (
-        <Index/>
+        <Layout/>
     );
 }
 
