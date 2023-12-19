@@ -20,6 +20,12 @@
   background-position: right center;
   background-size: 16px 16px;
   background-repeat: no-repeat;
+
+  .text {
+    font-size: 13px;
+    line-height: 20px;
+    color: $grayspace-icon-gray-80;
+  }
 }
 
 

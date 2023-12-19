@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-.pagination-navbar {
+.paginationNavbar {
   width: 100%;
   height: 40px;
 
@@ -9,7 +9,7 @@
   align-items: center;
   gap: 16px;
 
-  &_items-number-block {
+  .itemsNumberBlock {
     height: 100%;
 
     display: flex;
@@ -18,17 +18,17 @@
     gap: 8px;
   }
 
-  &_custom-select-wrapper {
+  .selectWrapper {
     width: 47px;
     height: 32px;
   }
 
-  &_change-page-buttons {
+  .changePageButtons {
     width: 64px;
     display: flex;
   }
 
-  &_current-page {
+  .currentPage {
     //width: 182px;
 
     display: flex;
@@ -36,7 +36,7 @@
     gap: 8px;
   }
 
-  &_input {
+  .input {
     box-sizing: border-box;
     width: 42px;
     height: 32px;
@@ -58,10 +58,24 @@
     }
 
 
-    &-wrapper {
+    &Wrapper {
       display: flex;
       align-items: center;
       gap: 4px;
     }
+  }
+
+  .mainText {
+    font-size: 14px;
+    line-height: 20px;
+    color: $text-main;
+    font-weight: 400;
+  }
+
+  .disabledText {
+    font-size: 14px;
+    line-height: 20px;
+    color: $text-disable;
+    font-weight: 400;
   }
 }

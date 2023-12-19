@@ -11,7 +11,7 @@ const CustomSelect = ({
     }, ...rest
                       }) => {
     return <StyledSelect {...rest}
-                         className={`${styles.select} font-color--grayspace-icon-gray-80 font-size--13 font-line-height--20`}
+                         className={`${styles.select} ${styles.text}`}
                          defaultValue={defaultOption}
                          onChange={(choice) => selectChangeHandler(choice)}>
         {options.map(option => <option key={'option' + option}>{option}</option>)}
