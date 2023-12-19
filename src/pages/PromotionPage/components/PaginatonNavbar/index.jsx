@@ -4,12 +4,11 @@ import CustomSelect from "../../../../components/CustomSelect";
 import {useEffect, useState} from "react";
 
 const PaginatonNavbar = ({selectChangeHandler, pagesNumber, currentPage, setCurrentPage}) => {
+    const [curPage, setCurPage] = useState(currentPage)
 
     useEffect(() => {
         setCurPage(currentPage)
     }, [currentPage])
-
-    const [curPage, setCurPage] = useState(currentPage)
 
     const inputChangeHandler = (value) => {
         let newValue = value

@@ -3,6 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import CustomNavLink from "./components/CustomNavLink/CustomNavLink";
 import navlinks from "../../constants/navlinks.constants.js";
 import PromotionPage from "../../pages/PromotionPage/PromotionPage";
+import ClientsPage from "../../pages/ClientsPage";
 
 const Layout = () =>
     (<div className={'layout'}>
@@ -20,7 +21,7 @@ const Layout = () =>
                 <Route path={'protocols'} element={<div>protocols</div>}/>
                 <Route path={'orders'} element={<div>orders</div>}/>
                 <Route path={'banners'} element={<div>banners</div>}/>
-                <Route path={'seminars'} element={<div>seminars</div>}/>
+                <Route path={'seminars'} element={<ClientsPage/>}/>
                 <Route path={'promotions'} element={<PromotionPage/>}/>
             </Routes>
         </main>

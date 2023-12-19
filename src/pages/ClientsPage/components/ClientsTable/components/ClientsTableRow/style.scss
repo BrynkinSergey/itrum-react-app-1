@@ -1,0 +1,41 @@
+@import "src/styles/variables";
+
+.clients-table_row {
+  height: 68px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid $grayspace-layout-gray-10;
+
+  &_header {
+    height: 44px;
+    border-top: 1px solid $grayspace-layout-gray-10;
+    background-color: $grayspace-layout-gray-5;
+  }
+
+
+  & > *:nth-child(n) {
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    height: fit-content;
+    margin: 0;
+  }
+
+  //
+  //& > *:nth-child(1) {
+  //  width: 242px;
+  //}
+  //
+  //& > *:nth-child(2) {
+  //  width: 189px;
+  //}
+  //
+  //& > *:nth-child(3) {
+  //  width: 181px;
+  //}
+
+}
