@@ -26,7 +26,7 @@ const PaginatonNavbar = ({selectChangeHandler, pagesNumber, currentPage, setCurr
         <div className={'pagination-navbar_items-number-block'}>
             <p className={'font-color--text-main font-size--14 font-line-height--20 font-weight--400'}>Показывать</p>
             <div className={'pagination-navbar_custom-select-wrapper'}>
-                <CustomSelect selectChangeHandler={selectChangeHandler} options={[5, 10, 20]} defaultOption={10}/>
+                <CustomSelect selectChangeHandler={selectChangeHandler} options={[10, 20, 50]} defaultOption={10}/>
             </div>
         </div>
         <div className={'pagination-navbar_current-page'}>

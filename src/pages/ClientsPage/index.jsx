@@ -40,7 +40,7 @@ const ClientsPage = () => {
     }
 
     return (
-        <div>
+        <div className={'clients-page'}>
             <div className={'search-input_wrapper'}>
                 <SearchInput width={'320px'} height={'40px'} placeholder={'Поиск'} inputChangeHandler={(value) => {
                     setFilterMask(value)
