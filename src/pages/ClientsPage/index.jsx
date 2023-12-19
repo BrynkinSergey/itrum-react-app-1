@@ -21,8 +21,7 @@ const ClientsPage = () => {
 
     const filterData = (el) => {
         const lowerFilterMask = filterMask.toLowerCase()
-        return (el.name && el.name.toLowerCase().includes(lowerFilterMask))
-            || (el.lastName && el.lastName.toLowerCase().includes(lowerFilterMask))
+        return ((el.lastName || el.name) && (el.lastName + ' ' + el.name).toLowerCase().includes(lowerFilterMask))
             || (el.phone && el.phone.toLowerCase().includes(lowerFilterMask))
             || (el.email && el.email.toLowerCase().includes(lowerFilterMask))
     }
