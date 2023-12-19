@@ -1,4 +1,4 @@
-import './style.scss'
+import styles from './style.module.scss'
 import PromotionTableRow from "./components/PromotionTableRow";
 
 const PromotionTable = ({
@@ -8,7 +8,7 @@ const PromotionTable = ({
     const isChecked = data.every(el => el.isChecked)
     const isSomeChecked = data.some(el => el.isChecked)
 
-    return <div className={'promotion-table'}>
+    return <div className={styles.promotionTable}>
         <PromotionTableRow isChecked={isChecked} isSomeChecked={isSomeChecked}
                            toggleCheckbox={() => toggleCheckboxAll(isChecked, isSomeChecked)} isHeader={true}
                            values={['Категория', 'Подкатегория', 'Бренд', 'Товары', 'Кешбек']}/>

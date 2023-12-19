@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.promotion-table_row {
+.promotionTableRow {
   height: 68px;
   width: 100%;
 
@@ -8,11 +8,19 @@
   align-items: center;
 
   border-bottom: 1px solid $grayspace-layout-gray-10;
+  color: $text-main;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
 
-  &_header {
+  &Header {
     height: 44px;
     border-top: 1px solid $grayspace-layout-gray-10;
     background-color: $grayspace-layout-gray-5;
+
+    color: $grayspace-text-gray-70;
+    line-height: 24px;
+    font-weight: 500;
   }
 
   & > *:nth-child(1) {

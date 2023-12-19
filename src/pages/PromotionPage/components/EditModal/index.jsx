@@ -1,4 +1,4 @@
-import './style.scss'
+import styles from './style.module.scss'
 import {useEffect, useState} from "react";
 import Button from "../../../../components/Button/Button";
 import EditField from "./components/EditField";
@@ -36,9 +36,9 @@ const EditModal = ({closeHandler, handleSubmit, values}) => {
     }, [])
 
     return (
-        <div className={'edit-modal'}>
-            <div className={'edit-modal_content'}>
-                <div className={'edit-modal_buttons'}>
+        <div className={styles.editModal}>
+            <div className={styles.content}>
+                <div className={styles.buttons}>
                     <Button style={'outlined'} height={'48px'} width={'272px'} text={'Удалить'}/>
                     <Button handleClick={() => handleSubmit(
                         {
@@ -52,7 +52,7 @@ const EditModal = ({closeHandler, handleSubmit, values}) => {
                     )} height={'48px'} width={'272px'}
                             text={'Сохранить'}/>
                 </div>
-                <div className={'edit-modal_promo-info font-color--grayspace-text-gray-90 font-size--14'}>
+                <div className={styles.promoInfo}>
                     <EditField title={'Начисление кешбека с покупки'}>
                         <CustomInput width={'560px'} height={'40px'}
                                      type={'number'}
@@ -86,7 +86,7 @@ const EditModal = ({closeHandler, handleSubmit, values}) => {
                     </EditField>
                 </div>
             </div>
-            <div className={'edit-modal_background'} onClick={closeHandler}></div>
+            <div className={styles.background} onClick={closeHandler}></div>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.search-input {
+.searchInput {
   box-sizing: border-box;
   width: 42px;
   height: 32px;
@@ -23,7 +23,7 @@
   }
 
 
-  &-wrapper {
+  &Wrapper {
     width: fit-content;
     position: relative;
     display: flex;
@@ -32,14 +32,14 @@
   }
 }
 
-.test {
+.searchIcon {
   left: 12px;
   position: absolute;
   height: 16px;
   width: 16px;
 }
 
-.test-2 {
+.closeIcon {
   right: 12px;
   position: absolute;
   height: 16px;

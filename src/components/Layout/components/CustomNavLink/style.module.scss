@@ -1,0 +1,46 @@
+@import "src/styles/variables";
+
+.navLink {
+  display: flex;
+  width: 185px;
+  padding: 16px;
+  height: 24px;
+  align-items: center;
+  gap: 16px;
+  color: black;
+
+  text-decoration: none;
+
+  .text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}
+
+.active {
+  border-radius: 8px;
+  background: $cskc-06-ecc-500;
+  color: $grayspace-layout-white;
+
+  & path {
+    fill: white;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+
+  path {
+    fill: black;
+  }
+}
+
+.text {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}

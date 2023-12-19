@@ -1,0 +1,53 @@
+@import "src/styles/variables";
+
+.editModal {
+  height: 100%;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+  position: absolute;
+
+  & > .content {
+    height: 100%;
+    width: 640px;
+    background-color: $grayspace-layout-white;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & > .buttons {
+      box-sizing: border-box;
+      display: flex;
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 0;
+      gap: 16px;
+      border-bottom: 1px solid $grayspace-layout-gray-30;
+    }
+
+    & > .promoInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      color: $grayspace-text-gray-90;
+      font-size: 14px;
+    }
+  }
+
+  & > .background {
+    background-color: $black-070;
+    height: 100%;
+    width: 100%;
+  }
+}

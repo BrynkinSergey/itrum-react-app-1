@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.delete-modal {
+.deleteModal {
   width: 475px;
   height: 108px;
 
@@ -15,7 +15,14 @@
   background: $grayspace-layout-white;
   box-shadow: 0 0 1px 0 $modal-gray-shadow, 0 4px 8px 0 $modal-gray-shadow;
 
-  &_button {
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: $black-040;
+  }
+
+  &Button {
     cursor: pointer;
 
     display: flex;
@@ -25,5 +32,12 @@
     margin: 0;
     border: 0;
     background-color: $grayspace-layout-white;
+
+    > .text {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      color: $gray-1;
+    }
   }
 }

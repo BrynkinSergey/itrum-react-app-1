@@ -1,4 +1,4 @@
-import './style.scss'
+import styles from './style.module.scss'
 import ClientsTable from "./components/ClientsTable";
 import clientsData from "../../constants/clientsData.constants";
 import {useEffect, useState} from "react";
@@ -40,8 +40,8 @@ const ClientsPage = () => {
     }
 
     return (
-        <div className={'clients-page'}>
-            <div className={'search-input_wrapper'}>
+        <div className={styles.clientsPage}>
+            <div className={styles.searchInputWrapper}>
                 <SearchInput width={'320px'} height={'40px'} placeholder={'Поиск'} inputChangeHandler={(value) => {
                     setFilterMask(value)
                 }}/>

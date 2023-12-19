@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.checkbox-wrapper {
+.checkboxWrapper {
   position: relative;
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@
     background-image: url('./images/master.svg');
   }
 
-  &--some-checked input[type=checkbox] {
+  &SomeChecked input[type=checkbox] {
     background-image: linear-gradient(
                     to right,
                     $grayspace-layout-gray-30,

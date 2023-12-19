@@ -1,4 +1,4 @@
-import './PromotionPage.scss'
+import styles from './style.module.scss'
 import Button from "../../components/Button/Button";
 import PaginatonNavbar from "../../components/PaginatonNavbar";
 import PromotionTable from "./components/PromotionTable";
@@ -116,10 +116,10 @@ const PromotionPage = () => {
     }
 
     return <div
-        className={'promotion-page'}>
+        className={styles.promotionPage}>
         <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
                          selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
-        <div className={'btn-container'} onClick={openAddModal}>
+        <div className={styles.btnContainer} onClick={openAddModal}>
             <Button text={'Добавить акцию'}/>
         </div>
         <PromotionTable toggleCheckboxAll={toggleCheckboxAll}

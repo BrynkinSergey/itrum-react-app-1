@@ -1,9 +1,9 @@
-import './style.scss'
+import styles from './style.module.scss'
 
 const ClientsTableRow = ({isHeader = false, values, id}) => {
 
-    const headerStyles = 'clients-table_row clients-table_row_header font-color--grayspace-text-gray-70 font-size--14 font-line-height--24 font-weight--500';
-    const defaultStyles = 'clients-table_row font-color--text-main font-size--14 font-line-height--20 font-weight--400';
+    const headerStyles = `${styles.clientsTableRow} ${styles.clientsTableRowHeader} ${styles.headerText}`;
+    const defaultStyles = `${styles.clientsTableRow} ${styles.mainText}`;
 
     return (
         <div className={isHeader ? headerStyles : defaultStyles}>

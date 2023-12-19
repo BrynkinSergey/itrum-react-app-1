@@ -1,20 +1,17 @@
-.promotion-page {
+.clientsPage {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
-  padding-top: 40px;
 
   width: 100%;
   height: 100%;
 }
 
-.btn-container {
+.searchInputWrapper {
   width: 100%;
-  height: 40px;
-}
-
-.table {
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

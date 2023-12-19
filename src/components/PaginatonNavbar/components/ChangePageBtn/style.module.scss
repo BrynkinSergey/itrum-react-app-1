@@ -1,6 +1,6 @@
 @import "../../../../styles/variables";
 
-.change-page-button {
+.button {
   box-sizing: border-box;
   cursor: pointer;
 
@@ -15,13 +15,12 @@
   border: 1px solid $grayspace-layout-gray-30;
   background: $grayspace-layout-gray-5;
 
-  &--reversed {
-    @extend .change-page-button;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-  }
-
   &:active {
     background: $grayspace-layout-gray-30;
   }
+}
+
+.reversed {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
