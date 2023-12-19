@@ -1,4 +1,4 @@
-import './style.scss'
+import styles from './style.module.scss'
 import {useState} from "react";
 import styled from "styled-components";
 
@@ -21,7 +21,7 @@ const CustomInput = ({
     }
 
     return (
-        <CustomStyledInput {...rest} type={type} value={value} className={'custom-input'}
+        <CustomStyledInput {...rest} type={type} value={value} className={styles.input}
                            onChange={(e) => setValue(e.target.value)}
                            onBlur={(e) => inputChangeHandler(e.target.value)}
                            onKeyDown={(e) => handleKeyPress(e)}/>

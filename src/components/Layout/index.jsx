@@ -1,4 +1,4 @@
-import './Layout.scss'
+import styles from './style.module.scss'
 import {Route, Routes} from "react-router-dom";
 import CustomNavLink from "./components/CustomNavLink/CustomNavLink";
 import navlinks from "../../constants/navlinks.constants.js";
@@ -6,11 +6,11 @@ import PromotionPage from "../../pages/PromotionPage/PromotionPage";
 import ClientsPage from "../../pages/ClientsPage";
 
 const Layout = () =>
-    (<div className={'layout'}>
-        <nav className={'layout_navbar'}>
+    (<div className={styles.layout}>
+        <nav className={styles.navbar}>
             {navlinks.map(el => <CustomNavLink key={`navlink-${el.id}`} id={el.id} text={el.text} Icon={el.icon}/>)}
         </nav>
-        <main className={'layout_content'}>
+        <main className={styles.content}>
             <Routes>
                 <Route index element={<></>}/>
                 <Route path={'products'} element={<div>Products</div>}/>

@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.custom-input {
+.input {
   box-sizing: border-box;
   width: 42px;
   height: 32px;
@@ -20,12 +20,5 @@
 
   &[type=number] {
     -moz-appearance: textfield;
-  }
-
-
-  &-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
 }

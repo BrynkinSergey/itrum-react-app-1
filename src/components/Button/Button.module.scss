@@ -20,7 +20,7 @@
     box-shadow: 0px 0px;
   }
 
-  &--primary {
+  &.primary {
     border: 1px solid $cskc-06-ecc-400;
     background-color: $cskc-06-ecc-500;
     color: $grayspace-layout-white;
@@ -30,7 +30,7 @@
     }
   }
 
-  &--outlined {
+  &.outlined {
     border: 1px solid $grayspace-layout-gray-30;
     background-color: $grayspace-layout-white;
     color: $grayspace-text-gray-90;
