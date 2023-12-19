@@ -1,6 +1,6 @@
 import './style.scss'
 import ChangePageBtn from "./components/ChangePageBtn";
-import CustomSelect from "../../../../components/CustomSelect";
+import CustomSelect from "../CustomSelect";
 import {useEffect, useState} from "react";
 
 const PaginatonNavbar = ({selectChangeHandler, pagesNumber, currentPage, setCurrentPage}) => {

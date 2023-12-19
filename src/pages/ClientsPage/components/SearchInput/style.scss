@@ -1,0 +1,47 @@
+@import "src/styles/variables";
+
+.search-input {
+  box-sizing: border-box;
+  width: 42px;
+  height: 32px;
+
+  border-radius: 8px;
+  border: 1px solid $forms-gray-20;
+  background: $grayspace-layout-white;
+
+  text-align: start;
+  padding: 10px 36px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+
+
+  &-wrapper {
+    width: fit-content;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.test {
+  left: 12px;
+  position: absolute;
+  height: 16px;
+  width: 16px;
+}
+
+.test-2 {
+  right: 12px;
+  position: absolute;
+  height: 16px;
+  width: 16px;
+}

@@ -1,6 +1,6 @@
 import './PromotionPage.scss'
 import Button from "../../components/Button/Button";
-import PaginatonNavbar from "./components/PaginatonNavbar";
+import PaginatonNavbar from "../../components/PaginatonNavbar";
 import PromotionTable from "./components/PromotionTable";
 import {useEffect, useState} from "react";
 import tableData from "../../constants/tableData.constants";
