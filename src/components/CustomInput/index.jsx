@@ -1,31 +1,31 @@
 import styles from './style.module.scss'
-import {useState} from "react";
-import styled from "styled-components";
+import { useState } from 'react'
+import styled from 'styled-components'
 
 const CustomStyledInput = styled.input`
-  width: ${({width}) => width};
-  height: ${({height}) => height};
-  background-color: ${({backgroundColor}) => backgroundColor};
-  border: ${({border}) => border};
-  border-radius: ${({borderRadius}) => borderRadius};
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  border: ${({ border }) => border};
+  border-radius: ${({ borderRadius }) => borderRadius};
 `
 
 const CustomInput = ({
-                         defaultValue, type, inputChangeHandler = () => {
-    }, ...rest
-                     }) => {
-    const [value, setValue] = useState(defaultValue)
+  defaultValue, type, inputChangeHandler = () => {
+  }, ...rest
+}) => {
+  const [value, setValue] = useState(defaultValue)
 
-    const handleKeyPress = (e) => {
-        if (e.keyCode === 13) e.target.blur();
-    }
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) e.target.blur()
+  }
 
-    return (
+  return (
         <CustomStyledInput {...rest} type={type} value={value} className={styles.input}
-                           onChange={(e) => setValue(e.target.value)}
-                           onBlur={(e) => inputChangeHandler(e.target.value)}
-                           onKeyDown={(e) => handleKeyPress(e)}/>
-    );
-};
+                           onChange={(e) => { setValue(e.target.value) }}
+                           onBlur={(e) => { inputChangeHandler(e.target.value) }}
+                           onKeyDown={(e) => { handleKeyPress(e) }}/>
+  )
+}
 
-export default CustomInput;
+export default CustomInput

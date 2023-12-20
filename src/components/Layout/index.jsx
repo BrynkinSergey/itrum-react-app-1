@@ -1,12 +1,13 @@
 import styles from './style.module.scss'
-import {Route, Routes} from "react-router-dom";
-import CustomNavLink from "./components/CustomNavLink";
-import navLinks from "../../constants/navlinks.constants.js";
-import PromotionPage from "../../pages/PromotionPage";
-import ClientsPage from "../../pages/ClientsPage";
+import { Route, Routes } from 'react-router-dom'
+import CustomNavLink from './components/CustomNavLink'
+import navLinks from '../../constants/navlinks.constants.js'
+import PromotionPage from '../../pages/PromotionPage'
+import ClientsPage from '../../pages/ClientsPage'
+// import CategoriesPage from "../../pages/CategoriesPage";
 
 const Layout = () =>
-    (<div className={styles.layout}>
+  (<div className={styles.layout}>
         <nav className={styles.navbar}>
             {navLinks.map(el => <CustomNavLink key={`navlink-${el.id}`} id={el.id} text={el.text} Icon={el.icon}/>)}
         </nav>
@@ -27,5 +28,4 @@ const Layout = () =>
         </main>
     </div>)
 
-
-export default Layout;
+export default Layout
