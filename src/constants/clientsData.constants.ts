@@ -1,4 +1,6 @@
-const clientsData = [
+import { type IMockClient } from '../types/IClient'
+
+const clientsData: IMockClient[] = [
   {
     email: 'svetlana.tumalaeva@mail.ru',
     phone: '+79034285680',

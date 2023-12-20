@@ -1,6 +1,6 @@
 import styles from './style.module.scss'
 import Button from '../../components/Button/Button'
-import PaginatonNavbar from '../../components/PaginatonNavbar'
+import PaginationNavbar from '../../components/PaginationNavbar'
 import PromotionTable from './components/PromotionTable'
 import { useEffect, useState } from 'react'
 import tableData from '../../constants/tableData.constants'
@@ -116,8 +116,8 @@ const PromotionPage = () => {
 
   return <div
         className={styles.promotionPage}>
-        <PaginatonNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
-                         selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
+        <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
+                          selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
         <div className={styles.btnContainer} onClick={openAddModal}>
             <Button text={'Добавить акцию'}/>
         </div>
@@ -128,7 +128,9 @@ const PromotionPage = () => {
             <DeleteModal deleteHandler={deleteSelectedRows}
                          numberOfChecked={data.filter(el => el.isChecked).length}/>}
         {isEditModalOpen && <EditModal handleSubmit={addOrUpdatePromotion} values={editModalValues}
-                                       closeHandler={() => { setIsEditModalOpen(false) }}/>}
+                                       closeHandler={() => {
+                                         setIsEditModalOpen(false)
+                                       }}/>}
     </div>
 }
 
