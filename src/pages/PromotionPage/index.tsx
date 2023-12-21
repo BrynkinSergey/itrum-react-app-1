@@ -92,7 +92,7 @@ const PromotionPage = () => {
     const { category, subCategory, brand, products, cashback } = values
     let { id } = values
 
-    if (id === null) {
+    if (id === 0) {
       id = data[data.length - 1].id + 1
 
       const newPromo = {

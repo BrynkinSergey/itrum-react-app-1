@@ -19,6 +19,10 @@ const ClientsPage = () => {
     setData(parseClientsData(clientsData))
   }, [])
 
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [paginationValue])
+
   const filterData = (el: IClient) => {
     const lowerFilterMask = filterMask.toLowerCase()
     const fullName = `${el.lastName ?? ''} ${el.name ?? ''}`.trim().toLowerCase()

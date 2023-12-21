@@ -33,7 +33,7 @@ const EditModal = ({ closeHandler, handleSubmit, values }: IEditModalProps) => {
 
   useEffect(() => {
     const close = (e: WindowEventMap['keydown']) => {
-      if (e.code === '27') {
+      if (e.code === 'Escape') {
         closeHandler()
       }
     }

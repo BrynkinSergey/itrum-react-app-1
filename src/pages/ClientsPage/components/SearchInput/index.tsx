@@ -17,7 +17,7 @@ const SearchInput = ({
   const [value, setValue] = useState(defaultValue || '')
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === '13') {
+    if (e.code === 'Enter') {
       const target = e.target as HTMLInputElement
       target.blur()
     }

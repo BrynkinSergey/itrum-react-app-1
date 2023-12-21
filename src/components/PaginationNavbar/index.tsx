@@ -11,10 +11,10 @@ interface IPaginationNavbarProps {
 }
 
 const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCurrentPage }: IPaginationNavbarProps) => {
-  const [curPage, setCurPage] = useState(currentPage)
+  const [curPage, setCurPage] = useState(currentPage.toString())
 
   useEffect(() => {
-    setCurPage(currentPage)
+    setCurPage(currentPage.toString())
   }, [currentPage])
 
   const inputChangeHandler = (value: number) => {
@@ -22,11 +22,11 @@ const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCu
     if (newValue < 1) newValue = 1
     if (newValue > pagesNumber) newValue = pagesNumber
     setCurrentPage(newValue)
-    setCurPage(newValue)
+    setCurPage(newValue.toString())
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === '13') {
+    if (e.code === 'Enter') {
       const target = e.target as HTMLInputElement
       target.blur()
     }
@@ -44,7 +44,7 @@ const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCu
       <div className={styles.inputWrapper}>
         <input type={'number'} value={curPage} className={styles.input}
                onChange={(e) => {
-                 setCurPage(+e.target.value)
+                 setCurPage(e.target.value)
                }}
                onBlur={(e) => {
                  inputChangeHandler(+e.target.value)
@@ -58,11 +58,11 @@ const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCu
     <div className={styles.changePageButtons}>
       <ChangePageBtn isDisabled={currentPage === 1} isReversed={true}
                      onClickHandler={() => {
-                       inputChangeHandler(curPage - 1)
+                       inputChangeHandler(currentPage - 1)
                      }}/>
       <ChangePageBtn isDisabled={currentPage === pagesNumber}
                      onClickHandler={() => {
-                       inputChangeHandler(curPage + 1)
+                       inputChangeHandler(currentPage + 1)
                      }}/>
     </div>
   </div>

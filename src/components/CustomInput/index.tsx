@@ -16,7 +16,7 @@ const CustomInput = ({
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === '13') {
+    if (e.code === 'Enter') {
       if (inputRef.current) {
         inputRef.current.blur()
       }
