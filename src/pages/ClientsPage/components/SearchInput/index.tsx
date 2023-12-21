@@ -1,5 +1,7 @@
 import styles from './style.module.scss'
+
 import React, { useState } from 'react'
+
 import { ReactComponent as SearchIcon } from '../../../../images/icons/searsh.svg'
 import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg'
 

@@ -8,9 +8,10 @@ import { ReactComponent as PromoCodesIcon } from '../images/icons/navbar/Promoco
 import { ReactComponent as ProtocolsIcon } from '../images/icons/navbar/Protocols.svg'
 import { ReactComponent as SeminarsIcon } from '../images/icons/navbar/Seminars.svg'
 import { ReactComponent as UsersIcon } from '../images/icons/navbar/Users.svg'
+
 import { type INavLink } from '../types/INavLink'
 
-const navLinks: INavLink[] = [
+export const navLinks: INavLink[] = [
   {
     id: 'products',
     text: 'Продукты',
@@ -63,4 +64,4 @@ const navLinks: INavLink[] = [
   }
 ]
 
-export default navLinks
+export default { navLinks }

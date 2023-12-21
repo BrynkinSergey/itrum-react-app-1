@@ -1,4 +1,5 @@
 import styles from './style.module.scss'
+
 import { ReactComponent as DeleteIcon } from '../../../../images/icons/DeleteModal/delete-icon.svg'
 
 interface IDeleteModalProps {

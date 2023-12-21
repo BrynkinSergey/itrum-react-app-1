@@ -1,12 +1,17 @@
 import styles from './style.module.scss'
+
+import { useEffect, useState } from 'react'
+
 import Button from '../../components/Button'
 import PaginationNavbar from '../../components/PaginationNavbar'
 import PromotionTable from './components/PromotionTable'
-import { useEffect, useState } from 'react'
-import tableData from '../../constants/tableData'
-import parseData from '../../helpers/parseData'
 import DeleteModal from './components/DeleteModal'
 import EditModal from './components/EditModal'
+
+import parseData from '../../helpers/parseData'
+
+import tableData from '../../constants/tableData'
+
 import { type IPromotion } from '../../types/IPromotion'
 
 const emptyNewPromoValue: IPromotion = {
@@ -117,7 +122,7 @@ const PromotionPage = () => {
 
   return <div
     className={styles.promotionPage}>
-    <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
+    <PaginationNavbar currentPage={currentPage} onChangePage={setCurrentPage}
                       handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
     <div className={styles.btnContainer}>
       <Button text={'Добавить акцию'} handleClick={openAddModal}/>

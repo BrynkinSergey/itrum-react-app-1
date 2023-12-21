@@ -1,11 +1,14 @@
 import styles from './style.module.scss'
+
 import { Route, Routes } from 'react-router-dom'
+
 import CustomNavLink from './components/CustomNavLink'
-import navLinks from '../../constants/navlinks'
 import PromotionPage from '../../pages/PromotionPage'
 import ClientsPage from '../../pages/ClientsPage'
 import CategoriesPage from '../../pages/CategoriesPage'
+
 import { routes } from '../../constants/routes'
+import { navLinks } from '../../constants/navlinks'
 
 const Layout = () =>
   (<div className={styles.layout}>

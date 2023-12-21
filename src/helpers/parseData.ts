@@ -1,5 +1,6 @@
-import type { IMockPromotion, IPromotion } from '../types/IPromotion'
 import uuid from 'uuidv4'
+
+import type { IMockPromotion, IPromotion } from '../types/IPromotion'
 
 const parseData = (data: IMockPromotion[]): IPromotion[] => {
   return data.map((el) => {

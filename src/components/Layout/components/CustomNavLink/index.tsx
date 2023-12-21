@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom'
+
 import styles from './style.module.scss'
+
 import { type INavLink } from '../../../../types/INavLink'
 
 const CustomNavLink = ({ id, text, Icon }: INavLink) => (

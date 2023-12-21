@@ -1,10 +1,15 @@
 import styles from './style.module.scss'
-import ClientsTable from './components/ClientsTable'
-import clientsData from '../../constants/clientsData'
+
 import { useEffect, useState } from 'react'
+
+import ClientsTable from './components/ClientsTable'
 import PaginationNavbar from '../../components/PaginationNavbar'
 import SearchInput from './components/SearchInput'
+
 import parseClientsData from '../../helpers/parseClientsData'
+
+import clientsData from '../../constants/clientsData'
+
 import { type IClient } from '../../types/IClient'
 
 const ClientsPage = () => {
@@ -49,7 +54,7 @@ const ClientsPage = () => {
                    handleChange={(value: string) => {
                      setFilterMask(value)
                    }}/>
-      <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
+      <PaginationNavbar currentPage={currentPage} onChangePage={setCurrentPage}
                         handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
       <ClientsTable data={showedData}/>
     </div>

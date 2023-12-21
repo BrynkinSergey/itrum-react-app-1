@@ -1,5 +1,7 @@
 import styles from './style.module.scss'
+
 import CustomCheckbox from '../CustomCheckbox'
+
 import { type IPromotion } from '../../../../../../types/IPromotion'
 
 interface IPromotionTableRowProps {

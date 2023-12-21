@@ -1,5 +1,6 @@
-import { type IClient, type IMockClient } from '../types/IClient'
 import uuid from 'uuidv4'
+
+import { type IClient, type IMockClient } from '../types/IClient'
 
 const parseClientsData = (data: IMockClient[]): IClient[] => {
   return data.map((el) => {

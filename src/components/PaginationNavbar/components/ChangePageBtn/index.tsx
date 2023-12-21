@@ -1,5 +1,6 @@
 import styles from './style.module.scss'
-import { ReactComponent as ArrowSvg } from './images/arrow.svg'
+
+import { ReactComponent as ArrowSvg } from '../../../../images/icons/arrow.svg'
 
 interface IChangePageBtnProps {
   isDisabled?: boolean

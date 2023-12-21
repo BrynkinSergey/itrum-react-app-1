@@ -1,28 +1,28 @@
 import styles from './style.module.scss'
-import ChangePageBtn from './components/ChangePageBtn'
+
+import React, { useRef } from 'react'
+
 import CustomSelect from '../CustomSelect'
-import React, { useEffect, useState } from 'react'
+import ChangePageBtn from './components/ChangePageBtn'
 
 interface IPaginationNavbarProps {
   handleSelectChange: (value: string) => void
   pagesNumber: number
   currentPage: number
-  setCurrentPage: (page: number) => void
+  onChangePage: (page: number) => void
 }
 
-const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, setCurrentPage }: IPaginationNavbarProps) => {
-  const [curPage, setCurPage] = useState(currentPage.toString())
-
-  useEffect(() => {
-    setCurPage(currentPage.toString())
-  }, [currentPage])
+const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, onChangePage }: IPaginationNavbarProps) => {
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const handleInputChange = (value: number) => {
     let newValue = value
     if (newValue < 1) newValue = 1
     if (newValue > pagesNumber) newValue = pagesNumber
-    setCurrentPage(newValue)
-    setCurPage(newValue.toString())
+    onChangePage(newValue)
+    if (inputRef.current) {
+      inputRef.current.value = newValue.toString()
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -42,10 +42,7 @@ const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, setCur
     <div className={styles.currentPage}>
       <p className={styles.mainText}>Страница</p>
       <div className={styles.inputWrapper}>
-        <input type={'number'} value={curPage} className={styles.input}
-               onChange={(e) => {
-                 setCurPage(e.target.value)
-               }}
+        <input ref={inputRef} type={'number'} defaultValue={currentPage} className={styles.input}
                onBlur={(e) => {
                  handleInputChange(+e.target.value)
                }}

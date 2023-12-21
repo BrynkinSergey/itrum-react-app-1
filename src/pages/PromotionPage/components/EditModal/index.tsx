@@ -1,15 +1,19 @@
 import styles from './style.module.scss'
+
 import { useEffect, useState } from 'react'
+
 import Button from '../../../../components/Button'
 import EditField from './components/EditField'
 import CustomInput from '../../../../components/CustomInput'
 import CustomSelect from '../../../../components/CustomSelect'
+
 import {
   selectorBrands,
   selectorCategories,
   selectorProducts,
   selectorSubCategories
 } from '../../../../constants/selectorsValues'
+
 import { type IPromotion } from '../../../../types/IPromotion'
 
 interface IEditModalProps {
