@@ -45,12 +45,10 @@ const ClientsPage = () => {
 
   return (
     <div className={styles.clientsPage}>
-      <div className={styles.searchInputWrapper}>
-        <SearchInput placeholder={'Поиск'}
-                     handleChange={(value: string) => {
-                       setFilterMask(value)
-                     }}/>
-      </div>
+      <SearchInput placeholder={'Поиск'}
+                   handleChange={(value: string) => {
+                     setFilterMask(value)
+                   }}/>
       <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
                         handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
       <ClientsTable data={showedData}/>

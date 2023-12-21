@@ -4,7 +4,7 @@ import { type IPromotion } from '../../../../types/IPromotion'
 
 interface IPromotionTableProprs {
   data: IPromotion[]
-  toggleCheckbox: (id: number) => void
+  toggleCheckbox: (id: string) => void
   toggleCheckboxAll: (isSomeChecked: boolean, isChecked: boolean) => void
   openEditModal: (values: IPromotion) => void
 }

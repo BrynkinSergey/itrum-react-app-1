@@ -10,7 +10,7 @@ import EditModal from './components/EditModal'
 import { type IPromotion } from '../../types/IPromotion'
 
 const emptyNewPromoValue: IPromotion = {
-  id: 0,
+  id: '',
   isChecked: false,
   category: '-',
   subCategory: '-',
@@ -60,18 +60,13 @@ const PromotionPage = () => {
   const toggleCheckboxAll = (isChecked: boolean, isSomeChecked: boolean) => {
     const showFrom = ((currentPage - 1) * paginationValue)
     const showTo = showFrom + paginationValue
-    data.slice(showFrom, showTo).forEach(el => {
-      el.isChecked = !(isChecked || isSomeChecked)
-    })
-    setData([...data])
+    setData((prevData) => prevData.slice(showFrom, showTo).map(el => {
+      return { ...el, isChecked: !(isChecked || isSomeChecked) }
+    }))
   }
 
-  const toggleCheckbox = (id: number) => {
-    const el = data.find(el => el.id === id)
-    if (el) {
-      el.isChecked = !el.isChecked
-      setData([...data])
-    }
+  const toggleCheckbox = (id: string) => {
+    setData(data => data.map(el => el.id === id ? { ...el, isChecked: !el.isChecked } : el))
   }
 
   const deleteSelectedRows = () => {
@@ -92,7 +87,7 @@ const PromotionPage = () => {
     const { category, subCategory, brand, products, cashback } = values
     let { id } = values
 
-    if (id === 0) {
+    if (id === '') {
       id = data[data.length - 1].id + 1
 
       const newPromo = {

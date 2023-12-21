@@ -1,5 +1,5 @@
 export interface IPromotion {
-  id: number
+  id: string
   isChecked: boolean
   category: string
   subCategory: string

@@ -10,7 +10,6 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
-    //    "project": "./tsconfig.json"
   },
   "plugins": [
     "react"
@@ -20,6 +19,5 @@
     "react/jsx-uses-react": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/explicit-function-return-type": "off"
-    //    "@typescript-eslint/restrict-plus-operands": "error"
   }
 }

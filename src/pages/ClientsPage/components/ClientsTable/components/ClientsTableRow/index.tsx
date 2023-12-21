@@ -2,7 +2,7 @@ import styles from './style.module.scss'
 
 interface IClientsTableRowProps {
   isHeader?: boolean
-  id: number
+  id: string
   values: string[]
 }
 

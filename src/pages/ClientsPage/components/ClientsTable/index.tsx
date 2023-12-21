@@ -13,7 +13,7 @@ const ClientsTable = ({ data }: IClientsTableProps) => {
   }
   return (
     <div className={styles.clientsTable}>
-      <ClientsTableRow id={-1} isHeader={true} values={['ФИ', 'Почта', 'Телефон']}/>
+      <ClientsTableRow id={''} isHeader={true} values={['ФИ', 'Почта', 'Телефон']}/>
       {data.map(({ id, email, phone, name, lastName }: IClient, index) => {
         return <ClientsTableRow key={`cell-${id}-${index}`}
                                 values={parseValues({ name, lastName, email, phone })}
