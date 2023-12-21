@@ -119,8 +119,8 @@ const PromotionPage = () => {
     className={styles.promotionPage}>
     <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
                       handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
-    <div className={styles.btnContainer} onClick={openAddModal}>
-      <Button text={'Добавить акцию'}/>
+    <div className={styles.btnContainer}>
+      <Button text={'Добавить акцию'} handleClick={openAddModal}/>
     </div>
     <PromotionTable toggleCheckboxAll={toggleCheckboxAll}
                     data={showedData} toggleCheckbox={toggleCheckbox}
