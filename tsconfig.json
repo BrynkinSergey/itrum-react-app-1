@@ -58,3 +58,41 @@
   ]
   // *** The files to not type check ***
 }
+
+//{
+//  "compilerOptions": {
+//    "target": "es5",
+//    "lib": [
+//      "dom",
+//      "dom.iterable",
+//      "esnext"
+//    ],
+//    "allowJs": true,
+//    "strict": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "noImplicitAny": true,
+//    "noImplicitThis": true,
+//    "noUnusedLocals": true,
+//    "noUnusedParameters": true,
+//    "noImplicitReturns": true,
+//    "noEmit": true,
+//    "allowSyntheticDefaultImports": true,
+//    "esModuleInterop": true,
+//    "module": "esnext",
+//    "moduleResolution": "node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "jsx": "preserve",
+//    "skipLibCheck": true
+//  },
+//  "include": [
+//    "next-env.d.ts",
+//    "**/*.ts",
+//    "**/*.tsx",
+//    "src",
+//    "declaration.d.ts"
+//  ],
+//  "exclude": [
+//    "node_modules"
+//  ]
+//}

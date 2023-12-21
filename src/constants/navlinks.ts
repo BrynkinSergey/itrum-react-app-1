@@ -8,57 +8,58 @@ import { ReactComponent as PromoCodesIcon } from '../images/icons/navbar/Promoco
 import { ReactComponent as ProtocolsIcon } from '../images/icons/navbar/Protocols.svg'
 import { ReactComponent as SeminarsIcon } from '../images/icons/navbar/Seminars.svg'
 import { ReactComponent as UsersIcon } from '../images/icons/navbar/Users.svg'
+import { type INavLink } from '../types/INavLink'
 
-const navLinks = [
+const navLinks: INavLink[] = [
   {
     id: 'products',
     text: 'Продукты',
-    icon: ProductIcon
+    Icon: ProductIcon
   },
   {
     id: 'users',
     text: 'Пользователи',
-    icon: UsersIcon
+    Icon: UsersIcon
   },
   {
     id: 'categories',
     text: 'Категории',
-    icon: CategoriesIcon
+    Icon: CategoriesIcon
   },
   {
     id: 'cities',
     text: 'Города',
-    icon: CitiesIcon
+    Icon: CitiesIcon
   },
   {
     id: 'brands',
     text: 'Бренды',
-    icon: BrandsIcon
+    Icon: BrandsIcon
   },
   {
     id: 'protocols',
     text: 'Протоколы',
-    icon: ProtocolsIcon
+    Icon: ProtocolsIcon
   },
   {
     id: 'orders',
     text: 'Заказы',
-    icon: OrdersIcon
+    Icon: OrdersIcon
   },
   {
     id: 'banners',
     text: 'Баннеры',
-    icon: BannersIcon
+    Icon: BannersIcon
   },
   {
     id: 'seminars',
     text: 'Семинары',
-    icon: SeminarsIcon
+    Icon: SeminarsIcon
   },
   {
     id: 'promotions',
     text: 'Акции',
-    icon: PromoCodesIcon
+    Icon: PromoCodesIcon
   }
 ]
 

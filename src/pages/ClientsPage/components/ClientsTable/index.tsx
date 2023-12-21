@@ -1,6 +1,6 @@
 import styles from './style.module.scss'
 import ClientsTableRow from './components/ClientsTableRow'
-import parsePhoneNumber from '../../../../helpers/parsePhoneNumber.helper'
+import parsePhoneNumber from '../../../../helpers/parsePhoneNumber'
 import { type IClient } from '../../../../types/IClient'
 
 interface IClientsTableProps {

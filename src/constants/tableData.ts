@@ -1,4 +1,6 @@
-const tableData = [
+import { type IMockPromotion } from '../types/IPromotion'
+
+const tableData: IMockPromotion[] = [
   {
     category: 'Категория 1',
     subCategory: 'Подкатегория 1',

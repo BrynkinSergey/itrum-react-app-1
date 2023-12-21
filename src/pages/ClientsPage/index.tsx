@@ -1,10 +1,10 @@
 import styles from './style.module.scss'
 import ClientsTable from './components/ClientsTable'
-import clientsData from '../../constants/clientsData.constants'
+import clientsData from '../../constants/clientsData'
 import { useEffect, useState } from 'react'
 import PaginationNavbar from '../../components/PaginationNavbar'
 import SearchInput from './components/SearchInput'
-import parseClientsData from '../../helpers/parseClientsData.helper'
+import parseClientsData from '../../helpers/parseClientsData'
 import { type IClient } from '../../types/IClient'
 
 const ClientsPage = () => {

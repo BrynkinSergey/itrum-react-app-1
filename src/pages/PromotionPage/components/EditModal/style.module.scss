@@ -32,6 +32,11 @@
       flex-grow: 0;
       gap: 16px;
       border-bottom: 1px solid $grayspace-layout-gray-30;
+
+      & > .buttonWrapper {
+        height: 48px;
+        width: 272px;
+      }
     }
 
     & > .promoInfo {
