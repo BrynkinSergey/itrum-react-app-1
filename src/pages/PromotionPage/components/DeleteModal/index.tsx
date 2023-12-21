@@ -3,16 +3,16 @@ import { ReactComponent as DeleteIcon } from '../../../../images/icons/DeleteMod
 
 interface IDeleteModalProps {
   numberOfChecked: number
-  deleteHandler: () => void
+  handleClick: () => void
 }
 
-const DeleteModal = ({ numberOfChecked, deleteHandler }: IDeleteModalProps) => {
+const DeleteModal = ({ numberOfChecked, handleClick }: IDeleteModalProps) => {
   return (
     <div className={styles.deleteModal}>
       <p className={styles.text}>Количество
         выбранных
         позиций: {numberOfChecked}</p>
-      <button className={styles.deleteModalButton} onClick={deleteHandler}>
+      <button className={styles.deleteModalButton} onClick={handleClick}>
         <DeleteIcon/>
         <p className={styles.text}>Удалить</p>
       </button>

@@ -9,17 +9,17 @@ import DeleteModal from './components/DeleteModal'
 import EditModal from './components/EditModal'
 import { type IPromotion } from '../../types/IPromotion'
 
-const PromotionPage = () => {
-  const emptyNewPromoValue: IPromotion = {
-    id: 0,
-    isChecked: false,
-    category: '-',
-    subCategory: '-',
-    brand: '-',
-    products: '-',
-    cashback: ''
-  }
+const emptyNewPromoValue: IPromotion = {
+  id: 0,
+  isChecked: false,
+  category: '-',
+  subCategory: '-',
+  brand: '-',
+  products: '-',
+  cashback: ''
+}
 
+const PromotionPage = () => {
   const [data, setData] = useState<IPromotion[]>([])
   const [showedData, setShowedData] = useState<IPromotion[]>([])
   const [paginationValue, setPaginationValue] = useState(10)
@@ -53,7 +53,7 @@ const PromotionPage = () => {
     setShowedData(data.slice(showFrom, showTo))
   }, [paginationValue, currentPage, data])
 
-  const selectChangeHandler = (value: string) => {
+  const handleSelectChange = (value: string) => {
     setPaginationValue(+value)
   }
 
@@ -123,7 +123,7 @@ const PromotionPage = () => {
   return <div
     className={styles.promotionPage}>
     <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
-                      selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
+                      handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
     <div className={styles.btnContainer} onClick={openAddModal}>
       <Button text={'Добавить акцию'}/>
     </div>
@@ -131,10 +131,10 @@ const PromotionPage = () => {
                     data={showedData} toggleCheckbox={toggleCheckbox}
                     openEditModal={openEditModal}/>
     {data.some(el => el.isChecked) &&
-      <DeleteModal deleteHandler={deleteSelectedRows}
+      <DeleteModal handleClick={deleteSelectedRows}
                    numberOfChecked={data.filter(el => el.isChecked).length}/>}
     {isEditModalOpen && <EditModal handleSubmit={addOrUpdatePromotion} values={editModalValues}
-                                   closeHandler={() => {
+                                   handleClose={() => {
                                      setIsEditModalOpen(false)
                                    }}/>}
   </div>

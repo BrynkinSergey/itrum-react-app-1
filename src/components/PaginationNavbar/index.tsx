@@ -4,20 +4,20 @@ import CustomSelect from '../CustomSelect'
 import React, { useEffect, useState } from 'react'
 
 interface IPaginationNavbarProps {
-  selectChangeHandler: (value: string) => void
+  handleSelectChange: (value: string) => void
   pagesNumber: number
   currentPage: number
   setCurrentPage: (page: number) => void
 }
 
-const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCurrentPage }: IPaginationNavbarProps) => {
+const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, setCurrentPage }: IPaginationNavbarProps) => {
   const [curPage, setCurPage] = useState(currentPage.toString())
 
   useEffect(() => {
     setCurPage(currentPage.toString())
   }, [currentPage])
 
-  const inputChangeHandler = (value: number) => {
+  const handleInputChange = (value: number) => {
     let newValue = value
     if (newValue < 1) newValue = 1
     if (newValue > pagesNumber) newValue = pagesNumber
@@ -36,7 +36,7 @@ const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCu
     <div className={styles.itemsNumberBlock}>
       <p className={styles.mainText}>Показывать</p>
       <div className={styles.selectWrapper}>
-        <CustomSelect selectChangeHandler={selectChangeHandler} options={['10', '20', '50']} defaultOption={'10'}/>
+        <CustomSelect handleChange={handleSelectChange} options={['10', '20', '50']} defaultOption={'10'}/>
       </div>
     </div>
     <div className={styles.currentPage}>
@@ -47,7 +47,7 @@ const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCu
                  setCurPage(e.target.value)
                }}
                onBlur={(e) => {
-                 inputChangeHandler(+e.target.value)
+                 handleInputChange(+e.target.value)
                }}
                onKeyDown={(e) => {
                  handleKeyPress(e)
@@ -57,12 +57,12 @@ const PaginationNavbar = ({ selectChangeHandler, pagesNumber, currentPage, setCu
     </div>
     <div className={styles.changePageButtons}>
       <ChangePageBtn isDisabled={currentPage === 1} isReversed={true}
-                     onClickHandler={() => {
-                       inputChangeHandler(currentPage - 1)
+                     handleClick={() => {
+                       handleInputChange(currentPage - 1)
                      }}/>
       <ChangePageBtn isDisabled={currentPage === pagesNumber}
-                     onClickHandler={() => {
-                       inputChangeHandler(currentPage + 1)
+                     handleClick={() => {
+                       handleInputChange(currentPage + 1)
                      }}/>
     </div>
   </div>

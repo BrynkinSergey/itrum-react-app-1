@@ -25,7 +25,7 @@ const PromotionTableRow = ({
   return (
     <div className={`${styles.promotionTableRow} ${isHeader ? styles.promotionTableRowHeader : ''}`}>
       <CustomCheckbox isSomeChecked={isSomeChecked} isChecked={isChecked}
-                      onChangeHandler={() => {
+                      handleChange={() => {
                         toggleCheckbox()
                       }}/>
       <div onClick={() => {

@@ -4,18 +4,18 @@ interface ICustomSelectProps {
   isFixed?: boolean
   options: string[]
   defaultOption: string
-  selectChangeHandler: (value: string) => void
+  handleChange: (value: string) => void
 }
 
 const CustomSelect = ({
-  isFixed = false, options, defaultOption, selectChangeHandler = () => {
+  isFixed = false, options, defaultOption, handleChange = () => {
   }
 }: ICustomSelectProps) => {
   return <select
     className={`${styles.select} ${styles.text} ${isFixed ? styles.large : ''}`}
     defaultValue={defaultOption}
     onChange={(choice) => {
-      selectChangeHandler(choice.target.value)
+      handleChange(choice.target.value)
     }}>
     {options.map(option => <option key={'option' + option}>{option}</option>)}
   </select>

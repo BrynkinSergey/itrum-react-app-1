@@ -7,11 +7,11 @@ interface ISearchInputProps {
   defaultValue?: string
   type?: string
   placeholder?: string
-  inputChangeHandler: (value: string) => void
+  handleChange: (value: string) => void
 }
 
 const SearchInput = ({
-  defaultValue = '', type = 'text', placeholder = '', inputChangeHandler = () => {
+  defaultValue = '', type = 'text', placeholder = '', handleChange = () => {
   }
 }: ISearchInputProps) => {
   const [value, setValue] = useState(defaultValue || '')
@@ -25,7 +25,7 @@ const SearchInput = ({
 
   const handleClearInput = () => {
     setValue('')
-    inputChangeHandler('')
+    handleChange('')
   }
 
   return (
@@ -37,7 +37,7 @@ const SearchInput = ({
                setValue(e.target.value)
              }}
              onBlur={() => {
-               inputChangeHandler(value)
+               handleChange(value)
              }}
              onKeyDown={(e) => {
                handleKeyPress(e)

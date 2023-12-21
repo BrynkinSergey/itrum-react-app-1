@@ -4,11 +4,11 @@ import React, { useRef, useState } from 'react'
 interface ICustomInputProps {
   defaultValue: number
   type: string
-  inputChangeHandler: (value: string) => void
+  handleChange: (value: string) => void
 }
 
 const CustomInput = ({
-  defaultValue, type, inputChangeHandler = () => {
+  defaultValue, type, handleChange = () => {
   }
 }: ICustomInputProps) => {
   const [value, setValue] = useState(defaultValue.toString())
@@ -29,7 +29,7 @@ const CustomInput = ({
              setValue(e.target.value)
            }}
            onBlur={(e) => {
-             inputChangeHandler(e.target.value)
+             handleChange(e.target.value)
            }}
            onKeyDown={handleKeyPress}/>
   )

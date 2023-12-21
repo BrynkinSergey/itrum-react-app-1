@@ -39,7 +39,7 @@ const ClientsPage = () => {
     setPagesNumber(Math.ceil(filteredData.length / paginationValue))
   }, [data, paginationValue, currentPage, filterMask])
 
-  const selectChangeHandler = (value: string) => {
+  const handleSelectChange = (value: string) => {
     setPaginationValue(+value)
   }
 
@@ -47,12 +47,12 @@ const ClientsPage = () => {
     <div className={styles.clientsPage}>
       <div className={styles.searchInputWrapper}>
         <SearchInput placeholder={'Поиск'}
-                     inputChangeHandler={(value: string) => {
+                     handleChange={(value: string) => {
                        setFilterMask(value)
                      }}/>
       </div>
       <PaginationNavbar currentPage={currentPage} setCurrentPage={setCurrentPage}
-                        selectChangeHandler={selectChangeHandler} pagesNumber={pagesNumber}/>
+                        handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
       <ClientsTable data={showedData}/>
     </div>
   )
