@@ -1,7 +1,6 @@
 import styles from './style.module.scss'
 
 import PromotionTableRow from './components/PromotionTableRow'
-
 import { type IPromotion } from '../../../../types/IPromotion'
 
 interface IPromotionTableProprs {

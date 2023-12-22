@@ -1,50 +1,48 @@
 import styles from './style.module.scss'
 
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 
 import { ReactComponent as SearchIcon } from '../../../../images/icons/searsh.svg'
 import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg'
 
 interface ISearchInputProps {
   defaultValue?: string
-  type?: string
   placeholder?: string
-  handleChange: (value: string) => void
+  handleBlur: (value: string) => void
 }
 
 const SearchInput = ({
-  defaultValue = '', type = 'text', placeholder = '', handleChange = () => {
+  defaultValue = '', placeholder = '', handleBlur = () => {
   }
 }: ISearchInputProps) => {
-  const [value, setValue] = useState(defaultValue || '')
+  const ref = useRef<HTMLInputElement>(null)
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
       const target = e.target as HTMLInputElement
       target.blur()
     }
   }
 
-  const handleClearInput = () => {
-    setValue('')
-    handleChange('')
+  const handleClick = () => {
+    if (ref.current) {
+      ref.current.value = ''
+    }
+    handleBlur('')
   }
 
   return (
     <div className={styles.searchInputWrapper}>
       <SearchIcon className={styles.searchIcon}/>
-      <input type={type} placeholder={placeholder} value={value}
+      <input ref={ref} type={'text'} placeholder={placeholder} defaultValue={defaultValue}
              className={styles.searchInput}
-             onChange={(e) => {
-               setValue(e.target.value)
-             }}
-             onBlur={() => {
-               handleChange(value)
+             onBlur={(e) => {
+               handleBlur(e.target.value)
              }}
              onKeyDown={(e) => {
-               handleKeyPress(e)
+               handleKeyDown(e)
              }}/>
-      <CloseIcon className={styles.closeIcon} onClick={handleClearInput}/>
+      <CloseIcon className={styles.closeIcon} onClick={handleClick}/>
     </div>
   )
 }

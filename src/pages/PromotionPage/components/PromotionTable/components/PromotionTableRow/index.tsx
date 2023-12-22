@@ -30,17 +30,15 @@ const PromotionTableRow = ({
                       handleChange={toggleCheckbox}/>
       <div onClick={() => {
         if (!isHeader) {
-          if (openEditModal) {
-            openEditModal({
-              id,
-              isChecked,
-              category: values[0],
-              subCategory: values[1],
-              brand: values[2],
-              products: values[3],
-              cashback: values[4]
-            })
-          }
+          openEditModal({
+            id,
+            isChecked,
+            category: values[0],
+            subCategory: values[1],
+            brand: values[2],
+            products: values[3],
+            cashback: values[4]
+          })
         }
       }}>
         {values.map((el, index) => <p key={`cell-${id}-${index}`}>{el}</p>)}

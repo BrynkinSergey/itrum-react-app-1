@@ -12,14 +12,15 @@ import parseData from '../../helpers/parseData'
 import tableData from '../../constants/tableData'
 
 import { type IPromotion } from '../../types/IPromotion'
+import { emptySelectorValue } from '../../constants/emptySelectorValue'
 
 const emptyNewPromoValue: IPromotion = {
   id: '',
   isChecked: false,
-  category: '-',
-  subCategory: '-',
-  brand: '-',
-  products: '-',
+  category: emptySelectorValue,
+  subCategory: emptySelectorValue,
+  brand: emptySelectorValue,
+  products: emptySelectorValue,
   cashback: ''
 }
 

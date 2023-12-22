@@ -5,6 +5,7 @@ import ClientsTableRow from './components/ClientsTableRow'
 import parsePhoneNumber from '../../../../helpers/parsePhoneNumber'
 
 import { type IClient } from '../../../../types/IClient'
+import { emptySelectorValue } from '../../../../constants/emptySelectorValue'
 
 interface IClientsTableProps {
   data: IClient[]
@@ -12,8 +13,9 @@ interface IClientsTableProps {
 
 const ClientsTable = ({ data }: IClientsTableProps) => {
   const parseValues = ({ name, lastName, email, phone }: Partial<IClient>) => {
-    return [`${lastName ?? ''} ${name ?? ''}`, email ?? '-', parsePhoneNumber(phone ?? '-')]
+    return [`${lastName ?? ''} ${name ?? ''}`, email ?? emptySelectorValue, parsePhoneNumber(phone ?? emptySelectorValue)]
   }
+
   return (
     <div className={styles.clientsTable}>
       <ClientsTableRow id={''} isHeader={true} values={['ФИ', 'Почта', 'Телефон']}/>

@@ -1,8 +1,8 @@
 @import "src/styles/variables";
 
 .select {
-  height: 100%;
-  width: 100%;
+  width: 560px;
+  height: 40px;
 
   padding: 0px 4px 0px 8px;
 
@@ -28,9 +28,9 @@
   }
 }
 
-.large {
-  width: 560px;
-  height: 40px;
+.fullSize {
+  height: 100%;
+  width: 100%;
 }
 
 

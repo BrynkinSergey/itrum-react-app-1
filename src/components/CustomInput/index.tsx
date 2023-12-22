@@ -1,37 +1,29 @@
 import styles from './style.module.scss'
-import React, { useRef, useState } from 'react'
+import React from 'react'
 
 interface ICustomInputProps {
-  defaultValue: number
-  type: string
-  handleChange: (value: string) => void
+  defaultValue: string
+  type: 'text' | 'number'
+  handleBlur: (value: string) => void
 }
 
 const CustomInput = ({
-  defaultValue, type, handleChange = () => {
+  defaultValue, type, handleBlur = () => {
   }
 }: ICustomInputProps) => {
-  const [value, setValue] = useState(defaultValue.toString())
-
-  const inputRef = useRef<HTMLInputElement | null>(null)
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
-      if (inputRef.current) {
-        inputRef.current.blur()
-      }
+      const target = e.target as HTMLInputElement
+      target.blur()
     }
   }
 
   return (
-    <input ref={inputRef} type={type} value={value} className={styles.input}
-           onChange={(e) => {
-             setValue(e.target.value)
-           }}
+    <input type={type} defaultValue={defaultValue} className={styles.input}
            onBlur={(e) => {
-             handleChange(e.target.value)
+             handleBlur(e.target.value)
            }}
-           onKeyDown={handleKeyPress}/>
+           onKeyDown={handleKeyDown}/>
   )
 }
 

@@ -21,11 +21,11 @@ interface IEditModalProps {
 }
 
 const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
+  const [subCategory, setSubCategory] = useState(values.subCategory)
   const [cashback, setCashback] = useState(values.cashback)
   const [category, setCategory] = useState(values.category)
-  const [subCategory, setSubCategory] = useState(values.subCategory)
-  const [brand, setBrand] = useState(values.brand)
   const [products, setProducts] = useState(values.products)
+  const [brand, setBrand] = useState(values.brand)
 
   const parseCashback = (value: string) => {
     let newValue = +(value.trim())
@@ -39,6 +39,7 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
         handleClose()
       }
     }
+
     window.addEventListener('keydown', close)
     return () => {
       window.removeEventListener('keydown', close)
@@ -70,15 +71,15 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
         <div className={styles.promoInfo}>
           <EditField title={'Начисление кешбека с покупки'}>
             <CustomInput type={'number'}
-                         defaultValue={+(cashback.split('%')[0])}
-                         handleChange={value => {
+                         defaultValue={(cashback.split('%')[0])}
+                         handleBlur={value => {
                            setCashback(parseCashback(value))
                          }}
             />
           </EditField>
 
           <EditField title={'Категория'}>
-            <CustomSelect isFixed={true} options={selectorCategories}
+            <CustomSelect isFullSize={false} options={selectorCategories}
                           defaultOption={values.category}
                           handleChange={choice => {
                             setCategory(choice)
@@ -86,7 +87,7 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
           </EditField>
 
           <EditField title={'Подкатегория'}>
-            <CustomSelect isFixed={true} options={selectorSubCategories}
+            <CustomSelect isFullSize={false} options={selectorSubCategories}
                           defaultOption={values.subCategory}
                           handleChange={choice => {
                             setSubCategory(choice)
@@ -94,7 +95,7 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
           </EditField>
 
           <EditField title={'Бренд'}>
-            <CustomSelect isFixed={true} options={selectorBrands}
+            <CustomSelect isFullSize={false} options={selectorBrands}
                           defaultOption={values.brand}
                           handleChange={choice => {
                             setBrand(choice)
@@ -102,7 +103,7 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
           </EditField>
 
           <EditField title={'Товар'}>
-            <CustomSelect isFixed={true} options={selectorProducts}
+            <CustomSelect isFullSize={false} options={selectorProducts}
                           defaultOption={values.products}
                           handleChange={(choice) => {
                             setProducts(choice)

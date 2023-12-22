@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 interface IButtonProps {
   text: string
   handleClick?: () => void
-  style?: string
+  style?: 'primary' | 'outlined'
 }
 
 const Button = ({
@@ -12,7 +12,7 @@ const Button = ({
   },
   style = 'primary'
 }: IButtonProps) => {
-  const btnStyle = style === 'primary' ? styles.primary : styles.outlined
+  const btnStyle: string = style === 'primary' ? styles.primary : styles.outlined
 
   return <button onClick={handleClick} className={`${styles.btn} ${btnStyle}`}>
     <p className={styles.text}>{text}</p>

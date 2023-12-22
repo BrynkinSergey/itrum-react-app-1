@@ -15,7 +15,7 @@ interface IPaginationNavbarProps {
 const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, onChangePage }: IPaginationNavbarProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleInputChange = (value: number) => {
+  const handlePageChange = (value: number) => {
     let newValue = value
     if (newValue < 1) newValue = 1
     if (newValue > pagesNumber) newValue = pagesNumber
@@ -44,7 +44,7 @@ const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, onChan
       <div className={styles.inputWrapper}>
         <input ref={inputRef} type={'number'} defaultValue={currentPage} className={styles.input}
                onBlur={(e) => {
-                 handleInputChange(+e.target.value)
+                 handlePageChange(+e.target.value)
                }}
                onKeyDown={(e) => {
                  handleKeyPress(e)
@@ -55,11 +55,11 @@ const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, onChan
     <div className={styles.changePageButtons}>
       <ChangePageBtn isDisabled={currentPage === 1} isReversed={true}
                      handleClick={() => {
-                       handleInputChange(currentPage - 1)
+                       handlePageChange(currentPage - 1)
                      }}/>
       <ChangePageBtn isDisabled={currentPage === pagesNumber}
                      handleClick={() => {
-                       handleInputChange(currentPage + 1)
+                       handlePageChange(currentPage + 1)
                      }}/>
     </div>
   </div>

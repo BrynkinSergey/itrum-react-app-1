@@ -14,22 +14,27 @@ import { type IClient } from '../../types/IClient'
 
 const ClientsPage = () => {
   const [data, setData] = useState<IClient[]>([])
+  const [showedData, setShowedData] = useState<IClient[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [pagesNumber, setPagesNumber] = useState(1)
   const [paginationValue, setPaginationValue] = useState(10)
-  const [showedData, setShowedData] = useState<IClient[]>([])
   const [filterMask, setFilterMask] = useState('')
 
-  const filterData = (el: IClient) => {
+  const isClientMatchesFilterMask = (client: IClient) => {
     const lowerFilterMask = filterMask.toLowerCase()
-    const fullName = `${el.lastName ?? ''} ${el.name ?? ''}`.trim().toLowerCase()
+    const fullName = `${client.lastName ?? ''} ${client.name ?? ''}`.trim().toLowerCase()
+
     return fullName.includes(lowerFilterMask) ??
-      (el.phone?.toLowerCase().includes(lowerFilterMask)) ??
-      (el.email?.toLowerCase().includes(lowerFilterMask))
+      (client.phone?.toLowerCase().includes(lowerFilterMask)) ??
+      (client.email?.toLowerCase().includes(lowerFilterMask))
   }
 
   const handleSelectChange = (value: string) => {
     setPaginationValue(+value)
+  }
+
+  const handleBlur = (value: string) => {
+    setFilterMask(value)
   }
 
   useEffect(() => {
@@ -43,17 +48,14 @@ const ClientsPage = () => {
   useEffect(() => {
     const showFrom = ((currentPage - 1) * paginationValue)
     const showTo = showFrom + paginationValue
-    const filteredData = data.filter(filterData)
+    const filteredData = data.filter(isClientMatchesFilterMask)
     setShowedData(filteredData.slice(showFrom, showTo))
     setPagesNumber(Math.ceil(filteredData.length / paginationValue))
   }, [data, paginationValue, currentPage, filterMask])
 
   return (
     <div className={styles.clientsPage}>
-      <SearchInput placeholder={'Поиск'}
-                   handleChange={(value: string) => {
-                     setFilterMask(value)
-                   }}/>
+      <SearchInput placeholder={'Поиск'} handleBlur={handleBlur}/>
       <PaginationNavbar currentPage={currentPage} onChangePage={setCurrentPage}
                         handleSelectChange={handleSelectChange} pagesNumber={pagesNumber}/>
       <ClientsTable data={showedData}/>

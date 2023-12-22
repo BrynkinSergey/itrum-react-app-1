@@ -1,18 +1,18 @@
 import styles from './style.module.scss'
 
 interface ICustomSelectProps {
-  isFixed?: boolean
+  isFullSize?: boolean
   options: string[]
   defaultOption: string
   handleChange: (value: string) => void
 }
 
 const CustomSelect = ({
-  isFixed = false, options, defaultOption, handleChange = () => {
+  isFullSize = true, options, defaultOption, handleChange = () => {
   }
 }: ICustomSelectProps) => {
   return <select
-    className={`${styles.select} ${styles.text} ${isFixed ? styles.large : ''}`}
+    className={`${styles.select} ${styles.text} ${isFullSize ? styles.fullSize : ''}`}
     defaultValue={defaultOption}
     onChange={(choice) => {
       handleChange(choice.target.value)
