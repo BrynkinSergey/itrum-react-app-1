@@ -2,7 +2,7 @@ import styles from './style.module.scss'
 
 import React, { useRef } from 'react'
 
-import CustomSelect from '../CustomSelect'
+import { CustomSelect } from '../'
 import ChangePageBtn from './components/ChangePageBtn'
 
 interface IPaginationNavbarProps {

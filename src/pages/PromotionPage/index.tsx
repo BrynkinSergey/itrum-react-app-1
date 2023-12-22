@@ -2,8 +2,7 @@ import styles from './style.module.scss'
 
 import { useEffect, useState } from 'react'
 
-import Button from '../../components/Button'
-import PaginationNavbar from '../../components/PaginationNavbar'
+import { Button, PaginationNavbar } from '../../components'
 import PromotionTable from './components/PromotionTable'
 import DeleteModal from './components/DeleteModal'
 import EditModal from './components/EditModal'
@@ -32,31 +31,6 @@ const PromotionPage = () => {
   const [pagesNumber, setPagesNumber] = useState(0)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [editModalValues, setEditModalValues] = useState(emptyNewPromoValue)
-
-  useEffect(() => {
-    setData(parseData(tableData))
-    const pagesNumber = Math.ceil(tableData.length / paginationValue)
-    setPagesNumber(pagesNumber)
-    setShowedData(parseData(tableData).slice(0, paginationValue))
-  }, [])
-
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [paginationValue])
-
-  useEffect(() => {
-    const pagesNumber = Math.ceil(data.length / paginationValue)
-    setPagesNumber(pagesNumber)
-    if (currentPage > pagesNumber) setCurrentPage(pagesNumber)
-  }, [paginationValue, data])
-
-  useEffect(() => {
-    if (currentPage < 1) setCurrentPage(1)
-    if (currentPage > pagesNumber) setCurrentPage(pagesNumber)
-    const showFrom = ((currentPage - 1) * paginationValue)
-    const showTo = showFrom + paginationValue
-    setShowedData(data.slice(showFrom, showTo))
-  }, [paginationValue, currentPage, data])
 
   const handleSelectChange = (value: string) => {
     setPaginationValue(+value)
@@ -119,6 +93,31 @@ const PromotionPage = () => {
     }
     setIsEditModalOpen(false)
   }
+
+  useEffect(() => {
+    setData(parseData(tableData))
+    const pagesNumber = Math.ceil(tableData.length / paginationValue)
+    setPagesNumber(pagesNumber)
+    setShowedData(parseData(tableData).slice(0, paginationValue))
+  }, [])
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [paginationValue])
+
+  useEffect(() => {
+    const pagesNumber = Math.ceil(data.length / paginationValue)
+    setPagesNumber(pagesNumber)
+    if (currentPage > pagesNumber) setCurrentPage(pagesNumber)
+  }, [paginationValue, data])
+
+  useEffect(() => {
+    if (currentPage < 1) setCurrentPage(1)
+    if (currentPage > pagesNumber) setCurrentPage(pagesNumber)
+    const showFrom = ((currentPage - 1) * paginationValue)
+    const showTo = showFrom + paginationValue
+    setShowedData(data.slice(showFrom, showTo))
+  }, [paginationValue, currentPage, data])
 
   return <div
     className={styles.promotionPage}>

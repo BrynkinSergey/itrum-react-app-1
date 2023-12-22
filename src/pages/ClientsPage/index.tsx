@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 import { useEffect, useState } from 'react'
 
 import ClientsTable from './components/ClientsTable'
-import PaginationNavbar from '../../components/PaginationNavbar'
+import { PaginationNavbar } from '../../components'
 import SearchInput from './components/SearchInput'
 
 import parseClientsData from '../../helpers/parseClientsData'
@@ -20,14 +20,6 @@ const ClientsPage = () => {
   const [showedData, setShowedData] = useState<IClient[]>([])
   const [filterMask, setFilterMask] = useState('')
 
-  useEffect(() => {
-    setData(parseClientsData(clientsData))
-  }, [])
-
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [paginationValue])
-
   const filterData = (el: IClient) => {
     const lowerFilterMask = filterMask.toLowerCase()
     const fullName = `${el.lastName ?? ''} ${el.name ?? ''}`.trim().toLowerCase()
@@ -36,6 +28,18 @@ const ClientsPage = () => {
       (el.email?.toLowerCase().includes(lowerFilterMask))
   }
 
+  const handleSelectChange = (value: string) => {
+    setPaginationValue(+value)
+  }
+
+  useEffect(() => {
+    setData(parseClientsData(clientsData))
+  }, [])
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [paginationValue])
+
   useEffect(() => {
     const showFrom = ((currentPage - 1) * paginationValue)
     const showTo = showFrom + paginationValue
@@ -43,10 +47,6 @@ const ClientsPage = () => {
     setShowedData(filteredData.slice(showFrom, showTo))
     setPagesNumber(Math.ceil(filteredData.length / paginationValue))
   }, [data, paginationValue, currentPage, filterMask])
-
-  const handleSelectChange = (value: string) => {
-    setPaginationValue(+value)
-  }
 
   return (
     <div className={styles.clientsPage}>
