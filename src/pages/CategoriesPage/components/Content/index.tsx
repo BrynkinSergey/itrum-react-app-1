@@ -51,7 +51,7 @@ const Content = ({
         {!data?.length && <p className={styles.emptyContent}>Здесь пока
           нет {contentType === 'subCategory' ? 'подкатегорий' : 'категорий'}</p>}
         {!!data?.length && <ContentRow value={headerName} isHeader={true}/>}
-        {data?.map(el => {
+        <div className={styles.rows}>{data?.map(el => {
           const isSelected = el.id === selectedId
           return <ContentRow handleEdit={(value: string) => {
             handleEditItem(el.id, value)
@@ -62,7 +62,7 @@ const Content = ({
             handleSelect(el.id)
           }} isSelected={isSelected}
                              key={`content-row-${el.id}`} value={el.title}/>
-        })}
+        })}</div>
       </div>
     </div>
   )

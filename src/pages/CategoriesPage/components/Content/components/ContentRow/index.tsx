@@ -5,7 +5,7 @@ import { ReactComponent as EditIcon } from '../../../../../../images/icons/penci
 import { ReactComponent as CloseIcon } from '../../../../../../images/icons/close.svg'
 import { ReactComponent as ApplyIcon } from '../../../../../../images/icons/Apply.svg'
 
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 interface IContentRowProps {
   isHeader?: boolean
@@ -32,11 +32,25 @@ const ContentRow = ({
   const defaultStyles = `${styles.contentRow} ${styles.mainText}`
   const selectedStyles = `${styles.contentRow} ${styles.mainText} ${styles.selected}`
 
+  const handleApply = () => {
+    if (inputRef.current?.value.trim()) handleEdit(inputRef.current.value)
+    setIsEditable(false)
+  }
+
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      handleApply()
+    }
+  }
+
   return (
     <div className={isHeader ? headerStyles : isSelected ? selectedStyles : defaultStyles}>
       <div className={styles.textWrapper} onClick={handleClick}>
         {!isEditable && <p className={styles.text}>{value}</p>}
-        {isEditable && <input autoFocus ref={inputRef} className={styles.text} defaultValue={value}/>}
+        {isEditable && <input autoFocus onKeyDown={(e) => {
+          handleEnter(e)
+        }} ref={inputRef} className={styles.text}
+                              defaultValue={value}/>}
       </div>
 
       {!isHeader && !isEditable && <>
@@ -52,10 +66,7 @@ const ContentRow = ({
 
       {!isHeader && isEditable && <>
         <div className={styles.icon}>
-          <ApplyIcon onClick={() => {
-            if (inputRef.current?.value.trim()) handleEdit(inputRef.current.value)
-            setIsEditable(false)
-          }}/>
+          <ApplyIcon onClick={handleApply}/>
         </div>
         <div className={styles.icon}>
           <CloseIcon onClick={() => {
