@@ -50,23 +50,20 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
     <div className={styles.editModal}>
       <div className={styles.content}>
         <div className={styles.buttons}>
-          <div className={styles.buttonWrapper}>
-            <Button style={'outlined'} text={'Удалить'}/>
-          </div>
-          <div className={styles.buttonWrapper}>
-            <Button handleClick={() => {
-              const submitData: IPromotion = {
-                id: values.id,
-                isChecked: values.isChecked,
-                cashback,
-                category,
-                subCategory,
-                brand,
-                products
-              }
-              handleSubmit(submitData)
-            }} text={'Сохранить'}/>
-          </div>
+          <Button sizing={'fixed'} style={'outlined'} text={'Удалить'}/>
+          <Button sizing={'fixed'} handleClick={() => {
+            const submitData: IPromotion = {
+              id: values.id,
+              isChecked: values.isChecked,
+              cashback,
+              category,
+              subCategory,
+              brand,
+              products
+            }
+            handleSubmit(submitData)
+          }} text={'Сохранить'}/>
+
         </div>
         <div className={styles.promoInfo}>
           <EditField title={'Начисление кешбека с покупки'}>
