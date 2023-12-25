@@ -1,6 +1,11 @@
 import styles from './style.module.scss'
+
 import { ReactComponent as DeleteIcon } from '../../../../../../images/icons/DeleteModal/delete-icon.svg'
 import { ReactComponent as EditIcon } from '../../../../../../images/icons/pencil.svg'
+import { ReactComponent as CloseIcon } from '../../../../../../images/icons/close.svg'
+import { ReactComponent as ApplyIcon } from '../../../../../../images/icons/Apply.svg'
+
+import { useRef, useState } from 'react'
 
 interface IContentRowProps {
   isHeader?: boolean
@@ -8,13 +13,21 @@ interface IContentRowProps {
   isSelected?: boolean
   handleClick?: () => void
   handleDelete?: () => void
+  handleEdit?: (value: string) => void
 }
 
 const ContentRow = ({
+  handleEdit = () => {
+  },
   handleClick = () => {
-  }, handleDelete = () => {
-  }, isSelected = false, isHeader = false, value
+  },
+  handleDelete = () => {
+  },
+  isSelected = false, isHeader = false, value
 }: IContentRowProps) => {
+  const [isEditable, setIsEditable] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const headerStyles = `${styles.contentRow} ${styles.contentRowHeader} ${styles.headerText}`
   const defaultStyles = `${styles.contentRow} ${styles.mainText}`
   const selectedStyles = `${styles.contentRow} ${styles.mainText} ${styles.selected}`
@@ -22,14 +35,35 @@ const ContentRow = ({
   return (
     <div className={isHeader ? headerStyles : isSelected ? selectedStyles : defaultStyles}>
       <div className={styles.textWrapper} onClick={handleClick}>
-        <p className={styles.text}>{value}</p>
+        {!isEditable && <p className={styles.text}>{value}</p>}
+        {isEditable && <input autoFocus ref={inputRef} className={styles.text} defaultValue={value}/>}
       </div>
-      {!isHeader && <div className={styles.icon}>
-        <EditIcon/>
-      </div>}
-      {!isHeader && <div className={styles.icon}>
-        <DeleteIcon onClick={handleDelete}/>
-      </div>}
+
+      {!isHeader && !isEditable && <>
+        <div className={styles.icon}>
+          <EditIcon onClick={() => {
+            setIsEditable(true)
+          }}/>
+        </div>
+        <div className={styles.icon}>
+          <DeleteIcon onClick={handleDelete}/>
+        </div>
+      </>}
+
+      {!isHeader && isEditable && <>
+        <div className={styles.icon}>
+          <ApplyIcon onClick={() => {
+            if (inputRef.current?.value.trim()) handleEdit(inputRef.current.value)
+            setIsEditable(false)
+          }}/>
+        </div>
+        <div className={styles.icon}>
+          <CloseIcon onClick={() => {
+            setIsEditable(false)
+          }
+          }/>
+        </div>
+      </>}
     </div>
   )
 }

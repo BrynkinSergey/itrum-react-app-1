@@ -15,9 +15,11 @@ interface IContentProps {
   setSelect: (id: string) => void
   handleAddItem: (title: string) => void
   handleDeleteItem: (id: string) => void
+  handleEditItem: (id: string, value: string) => void
 }
 
 const Content = ({
+  handleEditItem,
   handleAddItem,
   handleDeleteItem,
   setSelect,
@@ -51,7 +53,9 @@ const Content = ({
         {!!data?.length && <ContentRow value={headerName} isHeader={true}/>}
         {data?.map(el => {
           const isSelected = el.id === selectedId
-          return <ContentRow handleDelete={() => {
+          return <ContentRow handleEdit={(value: string) => {
+            handleEditItem(el.id, value)
+          }} handleDelete={() => {
             handleDeleteItem(el.id)
           }
           } handleClick={() => {
