@@ -13,12 +13,18 @@ interface IContentProps {
   selectedId: string
   contentType?: 'category' | 'subCategory'
   setSelect: (id: string) => void
-  addItem?: (title: string) => void
+  handleAddItem: (title: string) => void
+  handleDeleteItem: (id: string) => void
 }
 
 const Content = ({
-  addItem = () => {
-  }, setSelect, selectedId, data = [], headerName, contentType = 'category'
+  handleAddItem,
+  handleDeleteItem,
+  setSelect,
+  selectedId,
+  data = [],
+  headerName,
+  contentType = 'category'
 }: IContentProps) => {
   const [inputValue, setInputValue] = useState('')
 
@@ -29,7 +35,7 @@ const Content = ({
   const handleAdd = () => {
     const value = inputValue.trim()
     setInputValue('')
-    if (value) addItem(value)
+    if (value) handleAddItem(value)
   }
 
   return (
@@ -45,7 +51,10 @@ const Content = ({
         {!!data?.length && <ContentRow value={headerName} isHeader={true}/>}
         {data?.map(el => {
           const isSelected = el.id === selectedId
-          return <ContentRow handleClick={() => {
+          return <ContentRow handleDelete={() => {
+            handleDeleteItem(el.id)
+          }
+          } handleClick={() => {
             handleSelect(el.id)
           }} isSelected={isSelected}
                              key={`content-row-${el.id}`} value={el.title}/>

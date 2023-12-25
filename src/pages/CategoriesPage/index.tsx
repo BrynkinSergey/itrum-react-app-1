@@ -40,6 +40,23 @@ const CategoriesPage = () => {
     })
   }
 
+  const deleteCategory = (id: string) => {
+    setCategories(prev => {
+      return prev.filter(el => el.id !== id)
+    })
+  }
+
+  const deleteSubCategory = (id: string) => {
+    setCategories(prev => {
+      return prev.map(el => {
+        return {
+          ...el,
+          descendants: el.descendants?.filter(des => des.id !== id)
+        }
+      })
+    })
+  }
+
   useEffect(() => {
     const jsonData = localStorage.getItem('categories') ?? ''
     const initialCategories: ICategory[] = jsonData ? JSON.parse(jsonData) : []
@@ -61,7 +78,8 @@ const CategoriesPage = () => {
 
   return (
     <div className={styles.categoriesPage}>
-      <Content addItem={addCategory} setSelect={setSelectedCategoryId} selectedId={selectedCategoryId}
+      <Content handleDeleteItem={deleteCategory} handleAddItem={addCategory} setSelect={setSelectedCategoryId}
+               selectedId={selectedCategoryId}
                data={categories}
                headerName={'Название категории'}/>
       <div className={styles.separator}>
@@ -69,7 +87,9 @@ const CategoriesPage = () => {
       </div>
       {!selectedCategoryId && <div className={styles.chooseCategoryBlock}><p>Выберите категорию</p></div>}
       {selectedCategoryId &&
-        <Content addItem={addSubCategory} setSelect={setSelectedSubCategoryId} selectedId={selectedSubCategoryId}
+        <Content handleDeleteItem={deleteSubCategory} handleAddItem={addSubCategory}
+                 setSelect={setSelectedSubCategoryId}
+                 selectedId={selectedSubCategoryId}
                  data={subCategories}
                  contentType={'subCategory'}
                  headerName={'Название подкатегории'}/>}

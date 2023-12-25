@@ -7,10 +7,12 @@ interface IContentRowProps {
   value: string
   isSelected?: boolean
   handleClick?: () => void
+  handleDelete?: () => void
 }
 
 const ContentRow = ({
   handleClick = () => {
+  }, handleDelete = () => {
   }, isSelected = false, isHeader = false, value
 }: IContentRowProps) => {
   const headerStyles = `${styles.contentRow} ${styles.contentRowHeader} ${styles.headerText}`
@@ -18,13 +20,15 @@ const ContentRow = ({
   const selectedStyles = `${styles.contentRow} ${styles.mainText} ${styles.selected}`
 
   return (
-    <div className={isHeader ? headerStyles : isSelected ? selectedStyles : defaultStyles} onClick={handleClick}>
-      <p className={styles.text}>{value}</p>
+    <div className={isHeader ? headerStyles : isSelected ? selectedStyles : defaultStyles}>
+      <div className={styles.textWrapper} onClick={handleClick}>
+        <p className={styles.text}>{value}</p>
+      </div>
       {!isHeader && <div className={styles.icon}>
         <EditIcon/>
       </div>}
       {!isHeader && <div className={styles.icon}>
-        <DeleteIcon/>
+        <DeleteIcon onClick={handleDelete}/>
       </div>}
     </div>
   )

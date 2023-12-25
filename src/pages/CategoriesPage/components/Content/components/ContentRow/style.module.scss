@@ -4,7 +4,7 @@
   box-sizing: border-box;
   height: 68px;
   width: 100%;
-  padding: 10px 8px;
+  padding: 0 8px;
 
   display: flex;
   align-items: center;
@@ -50,4 +50,11 @@
 .selected {
   background-color: $grayspace-layout-gray-5;
   color: $cskc-06-ecc-400;
+}
+
+.textWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
