@@ -3,24 +3,39 @@ import React from 'react'
 
 interface ICustomInputProps {
   isFullWidth?: boolean
-  defaultValue: string
+  defaultValue?: string
   type: 'text' | 'number'
-  handleBlur: (value: string) => void
+  handleBlur?: (value: string) => void
+  handleEnter?: () => void
+  value?: string
+  setValue?: (value: string) => void
 }
 
 const CustomInput = ({
-  isFullWidth = false, defaultValue, type, handleBlur = () => {
+  setValue = () => {
+  },
+  value,
+  isFullWidth = false,
+  type,
+  handleBlur = () => {
+  },
+  handleEnter = () => {
   }
 }: ICustomInputProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
+      handleEnter()
       const target = e.target as HTMLInputElement
       target.blur()
     }
   }
 
   return (
-    <input type={type} defaultValue={defaultValue} className={`${styles.input} ${isFullWidth ? styles.fullWidth : ''}`}
+    <input type={type} value={value}
+           className={`${styles.input} ${isFullWidth ? styles.fullWidth : ''}`}
+           onChange={(e) => {
+             setValue(e.target.value)
+           }}
            onBlur={(e) => {
              handleBlur(e.target.value)
            }}

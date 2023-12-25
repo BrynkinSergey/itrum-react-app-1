@@ -1,31 +1,55 @@
 import styles from './style.module.scss'
-import { Button, CustomInput } from '../../../../components'
+
 import { useState } from 'react'
+
+import { Button, CustomInput } from '../../../../components'
 import ContentRow from './components/ContentRow'
+
+import { type ICategory } from '../../../../types/ICategory'
 
 interface IContentProps {
   headerName: string
-  data?: any[]
+  data: ICategory[]
+  selectedId: string
+  contentType?: 'category' | 'subCategory'
+  setSelect: (id: string) => void
+  addItem?: (title: string) => void
 }
 
-const Content = ({ data = [], headerName }: IContentProps) => {
-  console.log(data)
+const Content = ({
+  addItem = () => {
+  }, setSelect, selectedId, data = [], headerName, contentType = 'category'
+}: IContentProps) => {
   const [inputValue, setInputValue] = useState('')
-  console.log(inputValue)
 
-  const handleBlur = (value: string) => {
-    setInputValue(value)
+  const handleSelect = (id: string) => {
+    setSelect(id)
+  }
+
+  const handleAdd = () => {
+    const value = inputValue.trim()
+    setInputValue('')
+    if (value) addItem(value)
   }
 
   return (
     <div className={styles.content}>
       <div className={styles.addSection}>
-        <CustomInput isFullWidth={true} defaultValue={''} type={'text'} handleBlur={handleBlur}/>
-        <Button text={'Добавить категорию'}/>
+        <CustomInput value={inputValue} setValue={setInputValue} isFullWidth={true}
+                     type={'text'} handleEnter={handleAdd}/>
+        <Button text={'Добавить категорию'} handleClick={handleAdd}/>
       </div>
       <div>
-        <ContentRow value={headerName} isHeader={true}/>
-        <ContentRow value={'abc'}/>
+        {!data?.length && <p className={styles.emptyContent}>Здесь пока
+          нет {contentType === 'subCategory' ? 'подкатегорий' : 'категорий'}</p>}
+        {!!data?.length && <ContentRow value={headerName} isHeader={true}/>}
+        {data?.map(el => {
+          const isSelected = el.id === selectedId
+          return <ContentRow handleClick={() => {
+            handleSelect(el.id)
+          }} isSelected={isSelected}
+                             key={`content-row-${el.id}`} value={el.title}/>
+        })}
       </div>
     </div>
   )
