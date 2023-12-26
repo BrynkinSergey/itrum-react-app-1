@@ -45,7 +45,8 @@ const Content = ({
       <div className={styles.addSection}>
         <CustomInput value={inputValue} setValue={setInputValue} isFullWidth={true}
                      type={'text'} handleEnter={handleAdd}/>
-        <Button text={'Добавить категорию'} handleClick={handleAdd}/>
+        <Button text={contentType === 'category' ? 'Добавить категорию' : 'Добавить подкатегорию'}
+                handleClick={handleAdd}/>
       </div>
       <div>
         {!data?.length && <p className={styles.emptyContent}>Здесь пока
