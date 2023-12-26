@@ -46,11 +46,10 @@ const ContentRow = ({
   return (
     <div className={isHeader ? headerStyles : isSelected ? selectedStyles : defaultStyles}>
       <div className={styles.textWrapper} onClick={handleClick}>
-        {!isEditable && <p className={styles.text}>{value}</p>}
-        {isEditable && <input autoFocus onKeyDown={(e) => {
-          handleEnter(e)
-        }} ref={inputRef} className={styles.text}
-                              defaultValue={value}/>}
+        {isEditable
+          ? <input autoFocus onKeyDown={handleEnter} ref={inputRef} className={styles.text}
+                             defaultValue={value}/>
+          : <p className={styles.text}>{value}</p>}
       </div>
 
       {!isHeader && !isEditable && <>

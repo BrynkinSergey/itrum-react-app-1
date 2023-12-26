@@ -22,9 +22,10 @@ const ClientsPage = () => {
 
   const isClientMatchesFilterMask = (client: IClient) => {
     const lowerFilterMask = filterMask.toLowerCase()
-    const fullName = `${client.lastName ?? ''} ${client.name ?? ''}`.trim().toLowerCase()
+    const fullName = `${client.lastName ?? ''} ${client.name ?? ''}`
+    const lowerFullName = fullName.trim().toLowerCase()
 
-    return fullName.includes(lowerFilterMask) ??
+    return lowerFullName.includes(lowerFilterMask) ??
       (client.phone?.toLowerCase().includes(lowerFilterMask)) ??
       (client.email?.toLowerCase().includes(lowerFilterMask))
   }

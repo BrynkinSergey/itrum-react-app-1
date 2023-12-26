@@ -105,14 +105,14 @@ const CategoriesPage = () => {
       <div className={styles.separator}>
         <Arrow/>
       </div>
-      {!selectedCategoryId && <div className={styles.chooseCategoryBlock}><p>Выберите категорию</p></div>}
-      {selectedCategoryId &&
-        <Content handleEditItem={editSubCategory} handleDeleteItem={deleteSubCategory} handleAddItem={addSubCategory}
+      {selectedCategoryId
+        ? <Content handleEditItem={editSubCategory} handleDeleteItem={deleteSubCategory} handleAddItem={addSubCategory}
                  setSelect={setSelectedSubCategoryId}
                  selectedId={selectedSubCategoryId}
                  data={subCategories}
                  contentType={'subCategory'}
-                 headerName={'Название подкатегории'}/>}
+                 headerName={'Название подкатегории'}/>
+        : <div className={styles.chooseCategoryBlock}><p>Выберите категорию</p></div>}
     </div>
   )
 }

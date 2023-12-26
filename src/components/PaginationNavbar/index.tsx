@@ -46,9 +46,7 @@ const PaginationNavbar = ({ handleSelectChange, pagesNumber, currentPage, onChan
                onBlur={(e) => {
                  handlePageChange(+e.target.value)
                }}
-               onKeyDown={(e) => {
-                 handleKeyPress(e)
-               }}/>
+               onKeyDown={handleKeyPress}/>
         <p className={styles.disabledText}> из {pagesNumber}</p>
       </div>
     </div>

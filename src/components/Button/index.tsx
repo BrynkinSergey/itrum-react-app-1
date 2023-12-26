@@ -15,10 +15,11 @@ const Button = ({
   style = 'primary'
 }: IButtonProps) => {
   const btnStyle: string = style === 'primary' ? styles.primary : styles.outlined
+  const styleSizing: string = sizing === 'fixed' ? styles.fixed : styles.fullWidth
 
   return <button onClick={handleClick}
-                 className={`${styles.btn} ${btnStyle} ${sizing === 'fixed' ? styles.fixed : styles.fullWidth}`}>
-    <p className={styles.text}>{text}</p>
+                 className={`${styles.btn} ${btnStyle} ${styleSizing}`}>
+    {text}
   </button>
 }
 
