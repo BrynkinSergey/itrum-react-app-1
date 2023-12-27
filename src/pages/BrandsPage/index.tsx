@@ -7,6 +7,7 @@ import { addBrandAction } from '../../store/brandsReducer'
 import BrandHeader from './components/BrandHeader'
 import { useState } from 'react'
 import DeleteModal from './components/DeleteModal'
+import FileInput from './components/FileInput'
 
 const BrandsPage = () => {
   const [textInput, setTextInput] = useState('')
@@ -29,15 +30,10 @@ const BrandsPage = () => {
   return (
     <div className={styles.brandsPage}>
       <div className={styles.controlPanel}>
-        <CustomInput isFullWidth={true} type={'text'} value={textInput} setValue={setTextInput}/>
+        <CustomInput placeholder={'Введите название бренда'} isFullWidth={true} type={'text'} value={textInput}
+                     setValue={setTextInput}/>
         <div className={styles.fullWidthWrapper}>
-          {/* <CustomInput isFullWidth={true} type={'text'} /> */}
-          <input type={'file'} onChange={(e) => {
-            if (e.target.files) {
-              setSelectedImage(e.target.files[0])
-            }
-          }
-          }></input>
+          <FileInput fileName={selectedImage?.name ?? ''} handleFile={setSelectedImage}/>
           <p className={styles.text}>Размер логотипа 500x500 px PNG, JPG, JPEG</p>
         </div>
         <Button text={'Добавить бренд'} handleClick={addItem}/>

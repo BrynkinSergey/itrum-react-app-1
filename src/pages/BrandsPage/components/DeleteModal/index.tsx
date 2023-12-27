@@ -18,11 +18,11 @@ const DeleteModal = ({ text, id, handleCancel }: IDeleteModalProps) => {
         <p>Вы действительно хотите удалить бренд</p>
         <p className={styles.brandName}>{text}</p>
         <div className={styles.buttonsWrapper}>
-          <Button text={'удалить'} handleClick={() => {
+          <Button text={'Удалить'} handleClick={() => {
             dispatch(removeBrandAction(id))
             handleCancel()
           }}/>
-          <Button text={'отменить удаление'} style={'borderless'} handleClick={handleCancel}/>
+          <Button text={'Отменить удаление'} style={'borderless'} handleClick={handleCancel}/>
         </div>
       </div>
     </div>

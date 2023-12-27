@@ -4,10 +4,12 @@ import React from 'react'
 interface ICustomInputProps {
   isFullWidth?: boolean
   defaultValue?: string
+  isDisabled?: boolean
   type: 'text' | 'number'
   handleBlur?: (value: string) => void
   handleEnter?: () => void
   value?: string
+  placeholder?: string
   setValue?: (value: string) => void
 }
 
@@ -15,6 +17,8 @@ const CustomInput = ({
   setValue = () => {
   },
   value,
+  placeholder = '',
+  isDisabled = false,
   isFullWidth = false,
   type,
   handleBlur = () => {
@@ -31,7 +35,7 @@ const CustomInput = ({
   }
 
   return (
-    <input type={type} value={value}
+    <input type={type} value={value} placeholder={placeholder} disabled={isDisabled}
            className={`${styles.input} ${isFullWidth ? styles.fullWidth : ''}`}
            onChange={(e) => {
              setValue(e.target.value)
