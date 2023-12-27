@@ -57,7 +57,7 @@ const BrandsPage = () => {
                                       setToDeleteBrandName(el.name)
                                     }}/>)}
       </div>
-      {!brands.length && <p>Здесь пока нет брендов</p>}
+      {!brands.length && <p className={styles.emptyTableMessage}>Здесь пока нет брендов</p>}
       {!!toDeleteBrandId.length && <DeleteModal text={toDeleteBrandName} id={toDeleteBrandId} handleCancel={() => {
         setToDeleteBrandId('')
         setToDeleteBrandName('')
