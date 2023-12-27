@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 import { Route, Routes } from 'react-router-dom'
 
 import CustomNavLink from './components/CustomNavLink'
-import { CategoriesPage, ClientsPage, PromotionPage } from '../../pages'
+import { BrandsPage, CategoriesPage, ClientsPage, PromotionPage } from '../../pages'
 
 import { routes } from '../../constants/routes'
 import { navLinks } from '../../constants/navlinks'
@@ -20,7 +20,7 @@ const Layout = () =>
         <Route path={routes.users} element={<ClientsPage/>}/>
         <Route path={routes.categories} element={<CategoriesPage/>}/>
         <Route path={routes.cities} element={<div>cities</div>}/>
-        <Route path={routes.brands} element={<div>brands</div>}/>
+        <Route path={routes.brands} element={<BrandsPage/>}/>
         <Route path={routes.protocols} element={<div>protocols</div>}/>
         <Route path={routes.orders} element={<div>orders</div>}/>
         <Route path={routes.banners} element={<div>banners</div>}/>

@@ -4,7 +4,7 @@ interface IButtonProps {
   text: string
   sizing?: 'fullWidth' | 'fixed'
   handleClick?: () => void
-  style?: 'primary' | 'outlined'
+  style?: 'primary' | 'outlined' | 'borderless'
 }
 
 const Button = ({
@@ -14,7 +14,17 @@ const Button = ({
   },
   style = 'primary'
 }: IButtonProps) => {
-  const btnStyle: string = style === 'primary' ? styles.primary : styles.outlined
+  let btnStyle: string
+  switch (style) {
+    case 'outlined':
+      btnStyle = styles.outlined
+      break
+    case 'borderless':
+      btnStyle = styles.borderless
+      break
+    default:
+      btnStyle = styles.primary
+  }
   const styleSizing: string = sizing === 'fixed' ? styles.fixed : styles.fullWidth
 
   return <button onClick={handleClick}

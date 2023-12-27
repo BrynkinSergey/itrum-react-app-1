@@ -14,11 +14,11 @@
   font-weight: 500;
 
   cursor: pointer;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 
   &:active {
     transform: translateY(2px);
-    box-shadow: 0px 0px;
+    box-shadow: 0 0;
   }
 
   &.primary {
@@ -38,6 +38,21 @@
 
     &:hover {
       background-color: $grayspace-layout-gray-5;
+    }
+  }
+
+  &.borderless {
+    border: 0;
+    box-shadow: none;
+    background-color: $grayspace-layout-white;
+    color: $cskc-06-ecc-500;
+
+    &:hover {
+      color: $cskc-06-ecc-400;
+    }
+
+    &:active {
+      transform: none;
     }
   }
 

@@ -1,0 +1,25 @@
+@import "src/styles/variables";
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 44px;
+  padding: 0 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  color: $grayspace-text-gray-70;
+
+  border-bottom: 1px solid $grayspace-layout-gray-10;
+  border-top: 1px solid $grayspace-layout-gray-10;
+  background-color: $grayspace-layout-gray-5;
+
+  & > :nth-child(1) {
+    width: 165px;
+  }
+}
