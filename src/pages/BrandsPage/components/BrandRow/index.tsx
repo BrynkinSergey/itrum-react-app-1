@@ -6,12 +6,13 @@ import { ReactComponent as EditIcon } from '../../../../images/icons/pencil.svg'
 import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg'
 import { ReactComponent as ApplyIcon } from '../../../../images/icons/Apply.svg'
 import { ReactComponent as ImagePlaceholder } from '../../../../images/icons/en-img.svg'
+import AttachmentButton from './components/AttachmentButton'
 
 interface IBrandRowProps {
   value: string
   logo?: File | null
   handleDelete?: () => void
-  handleEdit?: (value: string) => void
+  handleEdit?: (name: string, logo: File | null) => void
 }
 
 const BrandRow = ({
@@ -23,10 +24,11 @@ const BrandRow = ({
   value
 }: IBrandRowProps) => {
   const [isEditable, setIsEditable] = useState(false)
+  const [newImage, setNewImage] = useState<File | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleApply = () => {
-    if (inputRef.current?.value.trim()) handleEdit(inputRef.current.value)
+    if (inputRef.current?.value.trim()) handleEdit(inputRef.current.value, newImage)
     setIsEditable(false)
   }
 
@@ -42,6 +44,9 @@ const BrandRow = ({
         {logo
           ? <img className={styles.image} src={URL.createObjectURL(logo)}/>
           : <ImagePlaceholder/>}
+        {isEditable && <AttachmentButton handleFile={(file) => {
+          setNewImage(file)
+        }}/>}
       </div>
       <div className={styles.textWrapper}>
         {isEditable

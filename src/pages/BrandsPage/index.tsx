@@ -3,7 +3,7 @@ import BrandRow from './components/BrandRow'
 import { Button, CustomInput } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { type IBrandsState } from '../../types/store'
-import { addBrandAction } from '../../store/brandsReducer'
+import { addBrandAction, updateBrandAction } from '../../store/brandsReducer'
 import BrandHeader from './components/BrandHeader'
 import { useState } from 'react'
 import DeleteModal from './components/DeleteModal'
@@ -27,6 +27,10 @@ const BrandsPage = () => {
     setSelectedImage(null)
   }
 
+  const editItem = (id: string, name: string, logo: File | null) => {
+    dispatch(updateBrandAction({ id, name, logo }))
+  }
+
   return (
     <div className={styles.brandsPage}>
       <div className={styles.controlPanel}>
@@ -45,6 +49,9 @@ const BrandsPage = () => {
         {brands.map(el => <BrandRow value={el.name}
                                     logo={el.logo}
                                     key={`brand-row-${el.id}`}
+                                    handleEdit={(name, logo) => {
+                                      editItem(el.id, name, logo)
+                                    }}
                                     handleDelete={() => {
                                       setToDeleteBrandId(el.id)
                                       setToDeleteBrandName(el.name)
