@@ -40,9 +40,9 @@ const EditModal = ({ handleClose, handleSubmit, values }: IEditModalProps) => {
       }
     }
 
-    window.addEventListener('keydown', close)
+    document.addEventListener('keydown', close)
     return () => {
-      window.removeEventListener('keydown', close)
+      document.removeEventListener('keydown', close)
     }
   }, [])
 

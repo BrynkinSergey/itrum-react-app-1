@@ -36,9 +36,7 @@ const SearchInput = ({
       <SearchIcon className={styles.searchIcon}/>
       <input ref={ref} type={'text'} placeholder={placeholder} defaultValue={defaultValue}
              className={styles.searchInput}
-             onBlur={(e) => {
-               handleBlur(e.target.value)
-             }}
+             onBlur={({ target: { value } }) => { handleBlur(value) }}
              onKeyDown={handleKeyDown}/>
       <CloseIcon className={styles.closeIcon} onClick={handleClick}/>
     </div>

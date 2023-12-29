@@ -40,9 +40,7 @@ const CustomInput = ({
            onChange={(e) => {
              setValue(e.target.value)
            }}
-           onBlur={(e) => {
-             handleBlur(e.target.value)
-           }}
+           onBlur={({ target: { value } }) => { handleBlur(value) }}
            onKeyDown={handleKeyDown}/>
   )
 }
