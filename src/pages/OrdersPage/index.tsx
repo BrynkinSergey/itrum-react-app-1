@@ -50,7 +50,7 @@ const OrdersPage = () => {
   }, [orders, paginationValue, currentPage, filterMask])
 
   return (
-    <div className={styles.test}>
+    <div className={styles.ordersPage}>
       <SearchInput placeholder={'Поиск по заказам'} handleBlur={setFilterMask}/>
       <PaginationNavbar handleSelectChange={(value) => {
         dispatch(setPaginationValueAction(+value))

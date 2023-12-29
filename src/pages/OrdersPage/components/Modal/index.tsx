@@ -1,10 +1,12 @@
 import styles from './style.module.scss'
 import { deliveryTypeEnum, type IOrder, paymentTypeEnum } from '../../../../types/IOrder'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, CustomInput, CustomSelect } from '../../../../components'
 import EditField from './components/EditField'
 import { orderTypeToPaymentType } from '../../../../helpers/orderTypeToPaymentType'
 import TextArea from '../../../../components/TextArea'
+import { useDispatch } from 'react-redux'
+import { editOrderAction } from '../../../../store/ordersReducer'
 
 interface IModalProps {
   order: IOrder
@@ -21,7 +23,15 @@ const deliveryTypeToText = (value: deliveryTypeEnum) => {
 }
 
 const Modal = ({ order, handleClose }: IModalProps) => {
+  const [orderNumberInput, setOrderNumber] = useState(order.order_number)
+
   const fullName = `${order.user.lastName ? order.user.lastName : ''} ${order.user.name ? order.user.name : ''}`
+  const dispatch = useDispatch()
+
+  const handleSubmit = () => {
+    dispatch(editOrderAction({ id: order.id, orderNumber: orderNumberInput }))
+    handleClose()
+  }
 
   useEffect(() => {
     const close = (e: WindowEventMap['keydown']) => {
@@ -41,14 +51,14 @@ const Modal = ({ order, handleClose }: IModalProps) => {
       <div className={styles.content}>
         <div className={styles.buttonsWrapper}>
           <Button handleClick={handleClose} text={'Закрыть'} sizing={'fixed'} style={'outlined'}/>
-          <Button handleClick={handleClose} text={'Подтвердить'} sizing={'fixed'}/>
+          <Button handleClick={handleSubmit} text={'Подтвердить'} sizing={'fixed'}/>
         </div>
         <div className={styles.scrollableContent}>
           <EditField text={'Заказчик'}>
             <CustomInput type={'text'} value={fullName.trim()}/>
           </EditField>
           <EditField text={'Номер заказа'}>
-            <CustomInput type={'text'} value={order.order_number}/>
+            <CustomInput type={'text'} value={orderNumberInput} setValue={setOrderNumber}/>
           </EditField>
           <EditField text={'Дата оформления'}>
             <CustomInput type={'text'} value={order.date}/>
