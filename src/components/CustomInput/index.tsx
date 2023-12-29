@@ -37,10 +37,12 @@ const CustomInput = ({
   return (
     <input type={type} value={value} placeholder={placeholder} disabled={isDisabled}
            className={`${styles.input} ${isFullWidth ? styles.fullWidth : ''}`}
-           onChange={(e) => {
-             setValue(e.target.value)
+           onChange={({ target: { value } }) => {
+             setValue(value)
            }}
-           onBlur={({ target: { value } }) => { handleBlur(value) }}
+           onBlur={({ target: { value } }) => {
+             handleBlur(value)
+           }}
            onKeyDown={handleKeyDown}/>
   )
 }
