@@ -1,8 +1,12 @@
-import { combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { brandsReducer } from './brandsReducer'
+import { ordersReducer } from './ordersReducer'
+import { thunk } from 'redux-thunk'
 
 const rootReducer = combineReducers({
-  brand: brandsReducer
+  brand: brandsReducer,
+  order: ordersReducer
 })
 
-export const store = createStore(rootReducer)
+// @ts-expect-error using deprecated methods for education
+export const store = createStore(rootReducer, applyMiddleware(thunk))

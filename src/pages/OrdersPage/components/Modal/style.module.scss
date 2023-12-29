@@ -1,0 +1,197 @@
+@import "src/styles/variables";
+
+.layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+  background-color: $black-070;
+
+  .content {
+    width: 640px;
+    height: 100vh;
+    background-color: $grayspace-layout-white;
+
+    .buttonsWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+
+      border-bottom: 1px solid $grayspace-layout-gray-30;
+
+      width: 100%;
+      height: 100px;
+    }
+
+    .scrollableContent {
+      box-sizing: border-box;
+      width: 100%;
+      height: calc(100vh - 100px);
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 8px;
+      padding: 16px 40px 24px;
+      overflow: scroll;
+
+      .productsWrapper {
+        width: 100%;
+        margin-top: 24px;
+
+        .title {
+          color: $grayspace-text-gray-90;
+
+          font-family: Inter;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 24px;
+        }
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          padding: 10px 8px;
+          align-items: center;
+          gap: 8px;
+          align-self: stretch;
+
+          border-bottom: 1px solid $grayspace-layout-gray-10;
+          background: $grayspace-layout-white;
+
+          .row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            font-family: Inter;
+            font-size: 12px;
+            line-height: 20px;
+            font-style: normal;
+
+            .boldText {
+              color: $grayspace-text-gray-90;
+              font-weight: 500;
+            }
+
+            .mainText {
+              color: $text-main;
+              font-weight: 400;
+            }
+
+            .blackText {
+              color: $black-500;
+              font-weight: 400;
+              line-height: normal;
+            }
+
+            .priceWrapper {
+              display: flex;
+              gap: 8px;
+              align-items: center;
+
+              color: $black-500;
+              text-align: center;
+              font-family: Inter;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+
+              .oldPrice {
+                color: $black-400;
+                font-size: 12px;
+                text-decoration-line: line-through;
+              }
+            }
+          }
+        }
+
+        .editButton {
+          margin-top: 8px;
+
+          color: $cskc-06-ecc-500;
+          background-color: $grayspace-layout-white;
+
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 24px;
+
+          border: 0;
+          outline: 0;
+        }
+
+        .total {
+          margin-top: 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 24px;
+
+          .title {
+            color: $grayspace-text-gray-90;
+          }
+
+          .row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .blackText {
+            color: $black-2;
+          }
+
+          .black500Text {
+            color: $black-500;
+          }
+
+          .smallText {
+            font-size: 14px;
+          }
+
+          .bonuses {
+            position: relative;
+            padding-right: 17px;
+
+            &:after {
+              content: '';
+              background-image: url("../../../../images/icons/outline.svg");
+              position: absolute;
+              top: 4px;
+              right: 0;
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+      }
+
+      .deliveryRowWrapper {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+
+  .background {
+    width: calc(100% - 640px);
+    height: 100%;
+  }
+}

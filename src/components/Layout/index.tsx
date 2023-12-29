@@ -7,6 +7,7 @@ import { BrandsPage, CategoriesPage, ClientsPage, PromotionPage } from '../../pa
 
 import { routes } from '../../constants/routes'
 import { navLinks } from '../../constants/navlinks'
+import OrdersPage from '../../pages/OrdersPage'
 
 const Layout = () =>
   (<div className={styles.layout}>
@@ -22,7 +23,7 @@ const Layout = () =>
         <Route path={routes.cities} element={<div>cities</div>}/>
         <Route path={routes.brands} element={<BrandsPage/>}/>
         <Route path={routes.protocols} element={<div>protocols</div>}/>
-        <Route path={routes.orders} element={<div>orders</div>}/>
+        <Route path={routes.orders} element={<OrdersPage/>}/>
         <Route path={routes.banners} element={<div>banners</div>}/>
         <Route path={routes.seminars} element={<div>sections</div>}/>
         <Route path={routes.promotions} element={<PromotionPage/>}/>

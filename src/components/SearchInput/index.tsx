@@ -2,8 +2,8 @@ import styles from './style.module.scss'
 
 import React, { useRef } from 'react'
 
-import { ReactComponent as SearchIcon } from '../../../../images/icons/searsh.svg'
-import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg'
+import { ReactComponent as SearchIcon } from '../../images/icons/searsh.svg'
+import { ReactComponent as CloseIcon } from '../../images/icons/close.svg'
 
 interface ISearchInputProps {
   defaultValue?: string

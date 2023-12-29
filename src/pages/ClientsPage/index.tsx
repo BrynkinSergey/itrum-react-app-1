@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import ClientsTable from './components/ClientsTable'
 import { PaginationNavbar } from '../../components'
-import SearchInput from './components/SearchInput'
+import SearchInput from '../../components/SearchInput'
 
 import parseClientsData from '../../helpers/parseClientsData'
 

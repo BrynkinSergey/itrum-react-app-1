@@ -1,0 +1,18 @@
+.test {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+
+  width: 100%
+}
+
+.fullWidthWrapper {
+  width: 100%;
+
+  .rowsWrapper {
+    width: 100%;
+    height: 700px;
+    overflow: scroll;
+  }
+}

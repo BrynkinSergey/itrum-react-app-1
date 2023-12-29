@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.ordersTableRow {
+  height: 68px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid $grayspace-layout-gray-10;
+
+  &Header {
+    height: 44px;
+    border-top: 1px solid $grayspace-layout-gray-10;
+    background-color: $grayspace-layout-gray-5;
+  }
+
+
+  & > *:nth-child(n) {
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    height: fit-content;
+    margin: 0;
+  }
+
+}
+
+.headerText {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  color: $grayspace-text-gray-70;
+}
+
+.mainText {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: $text-main;
+}

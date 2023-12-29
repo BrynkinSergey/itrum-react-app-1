@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.textarea {
+  box-sizing: border-box;
+  overflow: hidden;
+  resize: none;
+
+  height: 60px;
+
+  display: flex;
+  padding: 8px 12px 32px 12px;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  border: 1px solid $grayspace-layout-gray-30;
+  background: $grayspace-layout-white;
+
+  color: $grayspace-text-gray-90;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
