@@ -1,13 +1,12 @@
 import styles from './style.module.scss'
 import BrandRow from './components/BrandRow'
 import { Button, CustomInput } from '../../components'
-import { useDispatch, useSelector } from 'react-redux'
-import { type IBrandsState } from '../../types/store'
-import { addBrandAction, updateBrandAction } from '../../store/brandsReducer'
 import BrandHeader from './components/BrandHeader'
 import { useState } from 'react'
 import DeleteModal from './components/DeleteModal'
 import FileInput from './components/FileInput'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { brandSlice } from '../../store/reducers/brandSlice'
 
 const BrandsPage = () => {
   const [textInput, setTextInput] = useState('')
@@ -15,20 +14,21 @@ const BrandsPage = () => {
   const [toDeleteBrandName, setToDeleteBrandName] = useState('')
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
 
-  const brands = useSelector((state: { brand: IBrandsState }) => state.brand.brands)
-  const dispatch = useDispatch()
+  const { brands } = useAppSelector(state => state.brandReducer)
+  const { addBrand, updateBrand } = brandSlice.actions
+  const dispatch = useAppDispatch()
 
   const addItem = () => {
     const validatedText = textInput.trim()
     if (validatedText) {
-      dispatch(addBrandAction({ name: validatedText, logo: selectedImage }))
+      dispatch(addBrand({ name: validatedText, logo: selectedImage }))
     }
     setTextInput('')
     setSelectedImage(null)
   }
 
   const editItem = (id: string, name: string, logo: File | null) => {
-    dispatch(updateBrandAction({ id, name, logo }))
+    dispatch(updateBrand({ id, name, logo }))
   }
 
   return (

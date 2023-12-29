@@ -3,18 +3,17 @@ import SearchInput from '../../components/SearchInput'
 import { PaginationNavbar } from '../../components'
 import OrdersRow from './components/OrdersRow'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchOrders } from '../../asyncActions/orders'
 import { deliveryTypeEnum, type IOrder } from '../../types/IOrder'
-import { type IOrdersState, setPaginationValueAction, switchToPageAction } from '../../store/ordersReducer'
 import Modal from './components/Modal'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { orderSlice } from '../../store/reducers/orderSlice'
+import { fetchOrders } from '../../store/actionCreators'
 
 const OrdersPage = () => {
-  const orders: IOrder[] = useSelector((state: { order: IOrdersState }) => state.order.orders)
-  const currentPage = useSelector((state: { order: IOrdersState }) => state.order.currentPage)
-  const paginationValue = useSelector((state: { order: IOrdersState }) => state.order.paginationValue)
+  const { orders, currentPage, paginationValue } = useAppSelector(state => state.orderReducer)
+  const { setPaginationValue, switchToPage } = orderSlice.actions
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const [pagesNumber, setPagesNumber] = useState(1)
   const [showedOrders, setShowedOrders] = useState<IOrder[]>([])
@@ -32,7 +31,6 @@ const OrdersPage = () => {
   }
 
   useEffect(() => {
-    // @ts-expect-error IDK how to type this
     dispatch(fetchOrders())
   }, [])
 
@@ -53,9 +51,9 @@ const OrdersPage = () => {
     <div className={styles.ordersPage}>
       <SearchInput placeholder={'Поиск по заказам'} handleBlur={setFilterMask}/>
       <PaginationNavbar handleSelectChange={(value) => {
-        dispatch(setPaginationValueAction(+value))
+        dispatch(setPaginationValue(+value))
       }} pagesNumber={pagesNumber} currentPage={currentPage} onChangePage={(page) => {
-        dispatch(switchToPageAction(page))
+        dispatch(switchToPage(page))
       }}/>
       <div className={styles.fullWidthWrapper}>
         <OrdersRow id={'0'}

@@ -1,7 +1,7 @@
 import styles from './style.module.scss'
 import { Button } from '../../../../components'
-import { removeBrandAction } from '../../../../store/brandsReducer'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '../../../../hooks/redux'
+import { brandSlice } from '../../../../store/reducers/brandSlice'
 
 interface IDeleteModalProps {
   text: string
@@ -10,7 +10,8 @@ interface IDeleteModalProps {
 }
 
 const DeleteModal = ({ text, id, handleCancel }: IDeleteModalProps) => {
-  const dispatch = useDispatch()
+  const { removeBrand } = brandSlice.actions
+  const dispatch = useAppDispatch()
 
   return (
     <div className={styles.layout}>
@@ -19,7 +20,7 @@ const DeleteModal = ({ text, id, handleCancel }: IDeleteModalProps) => {
         <p className={styles.brandName}>{text}</p>
         <div className={styles.buttonsWrapper}>
           <Button text={'Удалить'} handleClick={() => {
-            dispatch(removeBrandAction(id))
+            dispatch(removeBrand(id))
             handleCancel()
           }}/>
           <Button text={'Отменить удаление'} style={'borderless'} handleClick={handleCancel}/>

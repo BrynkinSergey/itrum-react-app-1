@@ -5,8 +5,8 @@ import { Button, CustomInput, CustomSelect } from '../../../../components'
 import EditField from './components/EditField'
 import { orderTypeToPaymentType } from '../../../../helpers/orderTypeToPaymentType'
 import TextArea from '../../../../components/TextArea'
-import { useDispatch } from 'react-redux'
-import { editOrderAction } from '../../../../store/ordersReducer'
+import { useAppDispatch } from '../../../../hooks/redux'
+import { orderSlice } from '../../../../store/reducers/orderSlice'
 
 interface IModalProps {
   order: IOrder
@@ -26,10 +26,11 @@ const Modal = ({ order, handleClose }: IModalProps) => {
   const [orderNumberInput, setOrderNumber] = useState(order.order_number)
 
   const fullName = `${order.user.lastName ? order.user.lastName : ''} ${order.user.name ? order.user.name : ''}`
-  const dispatch = useDispatch()
+  const { editOrder } = orderSlice.actions
+  const dispatch = useAppDispatch()
 
   const handleSubmit = () => {
-    dispatch(editOrderAction({ id: order.id, orderNumber: orderNumberInput }))
+    dispatch(editOrder({ id: order.id, order_number: orderNumberInput }))
     handleClose()
   }
 
